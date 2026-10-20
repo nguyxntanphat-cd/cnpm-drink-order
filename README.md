@@ -36,8 +36,8 @@ frontend/  Next.js  :3000  ──REST/JSON──▶  backend/  NestJS  :3001  �
 ## Cấu trúc thư mục
 
 ```
-backend/     NestJS API (khởi tạo ở issue #11)
-frontend/    Next.js web (khởi tạo ở issue #12)
+backend/     NestJS API (cổng 3001)
+frontend/    Next.js web (cổng 3000)
 docs/        Tài liệu, ảnh thiết kế, biên bản Scrum
 .github/     CI, mẫu issue / pull request
 AGENTS.md    Quy ước cho AI coding agent
@@ -45,19 +45,33 @@ AGENTS.md    Quy ước cho AI coding agent
 
 ## Chạy dự án (dev)
 
-Yêu cầu: Node.js 20, Docker.
+Yêu cầu: **Node.js 24 LTS** (kèm npm 11), Docker.
 
 ```bash
 git clone https://github.com/nguyxntanphat-cd/cnpm-drink-order.git
 cd cnpm-drink-order
-cp .env.example .env
-docker compose up -d db              # PostgreSQL
+git checkout develop
+docker compose up -d db                       # PostgreSQL ở localhost:5432
 
-cd backend && npm install && npx prisma migrate dev && npm run seed && npm run start:dev   # http://localhost:3001
-cd frontend && npm install && npm run dev                                                  # http://localhost:3000
+# Terminal 1 – backend: http://localhost:3001
+cd backend
+cp .env.example .env
+npm install
+npm run prisma:migrate
+npm run seed
+npm run start:dev
+
+# Terminal 2 – frontend: http://localhost:3000
+cd frontend
+cp .env.example .env.local
+npm install
+npm run dev
 ```
 
-Tài khoản demo (sau khi seed): `demo@brewlite.vn / 123456` · nhân viên `staff@brewlite.vn / 123456` · mã giảm giá `WELCOME10`.
+Mở http://localhost:3000 thấy **"Hello BrewLite"** là backend và frontend đã nối được với nhau.
+Chi tiết lệnh: [backend/README.md](backend/README.md), [frontend/README.md](frontend/README.md).
+
+Tài khoản demo (sau khi làm xong issue #14 – seed): `demo@brewlite.vn / 123456` · nhân viên `staff@brewlite.vn / 123456` · mã giảm giá `WELCOME10`.
 
 Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose up --build`.
 

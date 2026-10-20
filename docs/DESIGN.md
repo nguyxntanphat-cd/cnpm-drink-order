@@ -13,7 +13,9 @@
 > Chưa có ảnh cho màn **Menu** (`/`): dùng lưới thẻ sản phẩm 2 cột, cùng phong cách thẻ trắng bo góc như giỏ hàng,
 > thanh lọc danh mục dạng nút tab giống màn Lịch sử, nút giỏ hàng có badge số lượng ở header.
 
-## Design tokens (`frontend/tailwind.config.ts`)
+## Design tokens
+
+Đã khai báo sẵn trong `frontend/src/app/globals.css` bằng `@theme` (Tailwind v4). Bảng dưới là giá trị tương ứng; class dùng: `bg-background`, `bg-surface`, `bg-primary`, `bg-primary-dark`, `bg-primary-light`, `text-ink`, `text-ink-muted`, `border-line`, `text-success`, `bg-success-soft`, `text-danger`, `bg-danger-soft`, `bg-warning-soft`, `rounded-card`, `rounded-btn`.
 
 ```ts
 colors: {

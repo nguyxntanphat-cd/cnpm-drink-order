@@ -22,14 +22,16 @@ hợp đồng API: [`docs/API.md`](docs/API.md), giao diện: [`docs/DESIGN.md`]
 
 | Phần | Công nghệ |
 |---|---|
-| Frontend | **Next.js 14+ (App Router)**, TypeScript, **TailwindCSS**, **Zustand** (giỏ hàng, auth), **TanStack Query** (gọi API), axios |
-| Backend | **NestJS 10+**, TypeScript, REST, **class-validator / class-transformer**, **Passport JWT**, **bcrypt** |
-| CSDL | **PostgreSQL 16** + **Prisma** |
-| Test | Backend: Jest (+ supertest cho e2e). Frontend: không bắt buộc |
+| Frontend | **Next.js 16 (App Router)**, React 19, TypeScript, **TailwindCSS v4**, **Zustand** (giỏ hàng, auth), **TanStack Query** (gọi API), axios |
+| Backend | **NestJS 12** (ES modules), TypeScript, REST, **class-validator / class-transformer**, **Passport JWT**, **bcrypt** |
+| CSDL | **PostgreSQL 16** + **Prisma 6** (`prisma-client-js`) |
+| Test | Backend: **Vitest** (+ supertest cho e2e). Frontend: không bắt buộc |
+| Lint/format | Backend: **oxlint** + Prettier. Frontend: ESLint (eslint-config-next) + Prettier |
 | DevOps | Docker Compose, GitHub Actions (CI), npm |
 
 - Package manager: **npm** (không dùng yarn/pnpm, không commit lockfile khác `package-lock.json`).
-- Node.js **20 LTS**.
+- **Node.js 24 LTS** (kèm npm 11). npm 10 của Node 22 bị lỗi khi cài backend → bắt buộc Node 24.
+- npm 11 chặn script cài đặt của thư viện lạ: nếu thêm thư viện cần postinstall, chạy `npm install-scripts approve <tên>` (được ghi vào `allowScripts` trong package.json).
 - Không thêm thư viện UI lớn (MUI, Antd, Chakra…). Dùng Tailwind + component tự viết trong `components/ui`.
   Icon: `lucide-react`. Cần thêm thư viện mới → ghi lý do trong PR.
 
@@ -40,7 +42,7 @@ hợp đồng API: [`docs/API.md`](docs/API.md), giao diện: [`docs/DESIGN.md`]
 ├── AGENTS.md              ← file này
 ├── README.md
 ├── docker-compose.yml     ← db (dev); thêm backend + frontend ở Task 9
-├── .env.example
+├── .env.example           ← biến cho docker-compose; mỗi app có `.env.example` riêng
 ├── backend/               ← NestJS
 │   ├── prisma/
 │   │   ├── schema.prisma
@@ -74,13 +76,15 @@ hợp đồng API: [`docs/API.md`](docs/API.md), giao diện: [`docs/DESIGN.md`]
 └── docs/
 ```
 
-Mỗi module NestJS: `xxx.module.ts`, `xxx.controller.ts`, `xxx.service.ts`, `dto/`, `xxx.service.spec.ts`.
+Mỗi module NestJS: `xxx.module.ts`, `xxx.controller.ts`, `xxx.service.ts`, `dto/`, `xxx.service.spec.ts`. Tạo nhanh: `npx nest g resource modules/xxx --no-spec` rồi tự viết spec.
 Mỗi feature frontend: `components/`, `hooks/` (useXxx gọi TanStack Query), `api.ts` (hàm gọi API).
 
 ## 4. Quy ước code chung
 
 - TypeScript `strict`. Không dùng `any` (dùng `unknown` + thu hẹp kiểu).
-- ESLint + Prettier mặc định của NestJS / Next.js. Prettier: `singleQuote: true`, `semi: true`, `printWidth: 100`.
+- Prettier (cấu hình sẵn trong từng app): `singleQuote: true`, `semi: true`, `printWidth: 100`. Chạy `npm run format` trước khi commit.
+- **Backend là ES modules**: import file nội bộ phải có đuôi `.js` (`import { X } from './x.service.js'`), test dùng `vi.fn()` thay cho `jest.fn()`.
+- **Next.js 16** khác nhiều so với bản cũ (vd `middleware` đổi thành `proxy`, Cache Components bật sẵn). AI phải đọc tài liệu trong `frontend/node_modules/next/dist/docs/` khi không chắc.
 - Đặt tên: file `kebab-case.ts`, component React `PascalCase.tsx`, biến/hàm `camelCase`,
   hằng số `UPPER_SNAKE_CASE`, enum `PascalCase` với giá trị `UPPER_SNAKE_CASE`.
 - **Code, tên biến, comment code: tiếng Anh. Text hiển thị cho người dùng: tiếng Việt có dấu.**
@@ -293,7 +297,7 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*` → chưa đă
 
 ### 7.4 Giao diện
 - Mobile-first, nội dung nằm trong khung `max-w-[430px] mx-auto` (giống bản thiết kế điện thoại).
-- Dùng **design token** trong `tailwind.config.ts` (xem `docs/DESIGN.md`), không hard-code mã màu trong component.
+- Dùng **design token** khai báo trong `src/app/globals.css` (`@theme`, Tailwind v4 – **không có** `tailwind.config.ts`): `bg-primary`, `text-ink-muted`, `rounded-card`… Không hard-code mã màu trong component.
 - Dùng component trong `components/ui` trước khi tự viết mới.
 - Bám sát ảnh thiết kế trong `docs/ui/`.
 
@@ -311,7 +315,7 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*` → chưa đă
 
 ## 9. Test
 
-- Backend: `npm run test` (unit) và `npm run test:e2e`. Bắt buộc có test cho Task 10:
+- Backend: `npm test` (unit, Vitest) và `npm run test:e2e`. Bắt buộc có test cho Task 10:
   (a) chặn chuyển trạng thái sai, (b) 2 lần cùng `Idempotency-Key` chỉ tạo 1 payment, (c) đặt đồng thời không vượt tồn kho.
 - Viết test cho service mình làm khi có logic tính toán (giá, khuyến mãi…).
 - CI (GitHub Actions) chạy lint + build + test cho cả `backend` và `frontend` trên mỗi PR – PR đỏ không được merge.

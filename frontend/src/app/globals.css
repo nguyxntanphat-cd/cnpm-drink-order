@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+/* Design tokens – xem docs/DESIGN.md. Không hard-code mã màu trong component. */
+@theme {
+  --color-background: #f5ebdd;
+  --color-surface: #ffffff;
+
+  --color-primary: #c08a5a;
+  --color-primary-dark: #8b5e3c;
+  --color-primary-light: #f1e2d0;
+
+  --color-ink: #3b2a20;
+  --color-ink-muted: #8a7a6d;
+  --color-line: #e9dccb;
+
+  --color-success: #2e7d32;
+  --color-success-soft: #e4f2e7;
+  --color-danger: #c62828;
+  --color-danger-soft: #fbe9e7;
+  --color-warning: #c08a5a;
+  --color-warning-soft: #fff3d6;
+
+  --radius-card: 16px;
+  --radius-btn: 12px;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-ink);
+}

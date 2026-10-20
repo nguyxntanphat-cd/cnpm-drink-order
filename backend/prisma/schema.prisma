@@ -1,0 +1,10 @@
+// Schema chuẩn nằm ở AGENTS.md §5 – TV2 thêm model ở issue #14 (T2.1).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
