@@ -1,60 +1,84 @@
-# CNPM – Ứng dụng đặt đồ uống
+# BrewLite – Ứng dụng đặt cà phê không dùng tiền mặt
 
-Đồ án môn Công nghệ phần mềm, làm việc nhóm 7 thành viên theo Scrum (3 Sprint).
+Bài tập lớn môn **Công nghệ Phần mềm** – Trường ĐH Sài Gòn, HK I 2026–2027.
+Nhóm 7 thành viên, làm theo **Agile Scrum** trong 3 Sprint. Thương hiệu hiển thị trên giao diện: **COLDEN COFFEE**.
 
-## Tính năng chính
-- Menu sản phẩm, trang chi tiết (chọn size, topping)
-- Giỏ hàng (Zustand)
-- Đăng ký / đăng nhập (JWT), route guard
-- Tạo đơn hàng, xác nhận đơn, lịch sử đơn (`GET /orders/me`)
-- Thanh toán mock (`POST /payments`, idempotent)
-- State machine trạng thái đơn, kiểm soát tồn kho (transaction + optimistic locking), khuyến mãi / điểm thưởng
+> *“BrewLite giúp khách hàng đặt và thanh toán đồ uống không dùng tiền mặt chỉ trong vài chạm, giảm thời gian xếp hàng và nhận đơn nhanh tại quầy.”*
 
-## Công nghệ (đề xuất – TV1 chốt ở Task 1)
+**Luồng MVP:** Menu → Chi tiết (size, đá, topping) → Giỏ hàng → Đăng nhập → Xác nhận đơn → Thanh toán QR (mock) → Kết quả → Lịch sử đơn.
+
+## Tài liệu
+
+| File | Nội dung |
+|---|---|
+| [AGENTS.md](AGENTS.md) | **Quy ước code chung – đọc trước khi code** (dành cho cả người và AI) |
+| [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) | Yêu cầu, user story, Definition of Done |
+| [docs/SCENARIOS.md](docs/SCENARIOS.md) | Kịch bản nghiệp vụ, ngoại lệ, use case |
+| [docs/API.md](docs/API.md) | Hợp đồng API giữa frontend và backend |
+| [docs/DESIGN.md](docs/DESIGN.md) + [docs/ui/](docs/ui/) | Thiết kế giao diện, design token |
+| [docs/BACKLOG.md](docs/BACKLOG.md) | Product Backlog, phân công, thứ tự phụ thuộc |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Quy trình Git / Pull Request / Scrum |
+
+## Công nghệ
+
 | Phần | Công nghệ |
 |---|---|
-| Backend | Node.js, NestJS, Passport/JWT, TypeORM |
-| Frontend | React (Vite), Zustand, React Router |
-| CSDL | PostgreSQL |
-| Triển khai | Docker, docker-compose |
+| Frontend | Next.js (App Router, TypeScript), TailwindCSS, Zustand, TanStack Query |
+| Backend | NestJS (TypeScript), REST, class-validator, Passport JWT, bcrypt |
+| CSDL | PostgreSQL 16 + Prisma |
+| Thanh toán | Mock Payment Gateway (mô phỏng chuyển khoản QR) |
+| DevOps | Docker Compose, GitHub Actions |
+
+```
+frontend/  Next.js  :3000  ──REST/JSON──▶  backend/  NestJS  :3001  ──Prisma──▶  PostgreSQL :5432
+```
 
 ## Cấu trúc thư mục
+
 ```
-backend/    API (TV2, TV5, TV6, TV7)
-frontend/   Giao diện web (TV3, TV4, TV5, TV6)
-docs/       Product Backlog, user story, biên bản họp Scrum
-.github/    Mẫu issue / pull request
+backend/     NestJS API (khởi tạo ở issue #11)
+frontend/    Next.js web (khởi tạo ở issue #12)
+docs/        Tài liệu, ảnh thiết kế, biên bản Scrum
+.github/     CI, mẫu issue / pull request
+AGENTS.md    Quy ước cho AI coding agent
 ```
 
-## Phân công
-| TV | Vai trò Scrum | Mảng | Task phụ trách |
-|---|---|---|---|
-| TV1 | Scrum Master | DevOps / Fullstack | Task 1 (khởi tạo, Git, README, .env); Task 9: docker-compose, README bàn giao; theo dõi burndown, tổ chức Daily/Retro |
-| TV2 | Product Owner | Backend | Task 2 (API products, seed); Task 6 (API tạo đơn); Task 9: `GET /orders/me`; viết user story và Product Backlog |
-| TV3 | Dev | Frontend | Task 3 (trang Menu); Task 4 (chi tiết, size/topping) |
-| TV4 | Dev | Frontend | Task 5 (giỏ hàng, Zustand); Task 9: màn hình xác nhận và lịch sử đơn |
-| TV5 | Dev | Fullstack | Task 7 (auth JWT: backend + trang đăng ký/đăng nhập, guard) |
-| TV6 | Dev | Backend | Task 8 (mock payment, `POST /payments`, UI thanh toán); Task 10: thanh toán idempotent |
-| TV7 | Dev | Backend | Task 10: State Machine, kiểm soát tồn kho (transaction + optimistic locking), khuyến mãi/điểm thưởng; viết test (a), (c) |
+## Chạy dự án (dev)
 
-> Mỗi người điền GitHub username của mình vào bảng trong [`docs/TEAM.md`](docs/TEAM.md).
+Yêu cầu: Node.js 20, Docker.
 
-## Lịch Sprint
-- **Sprint 1 (Task 1–4):** TV1 dựng khung dự án trước. TV2 làm API products, TV3 làm Menu và Chi tiết.
-  - TV4: dựng layout, header, store giỏ hàng (chuẩn bị Task 5)
-  - TV5: thiết kế schema User, nghiên cứu Passport/JWT
-  - TV6, TV7: thiết kế entity Order, OrderItem, Payment cùng TV2 và viết khung State Machine
-- **Sprint 2 (Task 5–7):** TV4 làm giỏ hàng, TV2 làm API đơn hàng, TV5 làm auth. TV6 và TV7 bắt đầu sớm phần lõi Task 10.
-- **Sprint 3 (Task 8–10):** TV6 làm thanh toán, TV4 làm xác nhận và lịch sử đơn, TV1 làm docker-compose. TV7 hoàn thiện khuyến mãi/điểm thưởng và test. Cả nhóm demo end-to-end và chuẩn bị Retrospective.
-
-Chi tiết từng task: [`docs/BACKLOG.md`](docs/BACKLOG.md).
-
-## Bắt đầu
 ```bash
-git clone <url-repo>
+git clone https://github.com/nguyxntanphat-cd/cnpm-drink-order.git
 cd cnpm-drink-order
 cp .env.example .env
-git checkout develop
-git checkout -b feature/<task>-<mo-ta-ngan>
+docker compose up -d db              # PostgreSQL
+
+cd backend && npm install && npx prisma migrate dev && npm run seed && npm run start:dev   # http://localhost:3001
+cd frontend && npm install && npm run dev                                                  # http://localhost:3000
 ```
-Quy trình làm việc nhóm: xem [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Tài khoản demo (sau khi seed): `demo@brewlite.vn / 123456` · nhân viên `staff@brewlite.vn / 123456` · mã giảm giá `WELCOME10`.
+
+Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose up --build`.
+
+## Thành viên & phân công
+
+| TV | Họ tên | GitHub | Vai trò Scrum | Phụ trách chính |
+|---|---|---|---|---|
+| TV1 | | @ | Scrum Master | Khởi tạo dự án, CI, trang Checkout, Docker & bàn giao |
+| TV2 | | @ | Product Owner | Prisma schema + seed, API sản phẩm, API đơn hàng |
+| TV3 | | @ | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn |
+| TV4 | | @ | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn |
+| TV5 | | @ | Dev | Đăng ký / Đăng nhập (backend + frontend) |
+| TV6 | | @ | Dev | Thanh toán (API idempotent + UI), Hủy đơn |
+| TV7 | | @ | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng |
+
+Mỗi người tự điền tên + GitHub vào bảng trên (PR đầu tiên của bạn). Chi tiết từng issue: [docs/BACKLOG.md](docs/BACKLOG.md).
+
+## Kế hoạch Sprint
+
+| Sprint | Mục tiêu | Task |
+|---|---|---|
+| 1 | Nền tảng & hiển thị menu | Task 1, 2, 3, 4 (+ khung Task 10) |
+| 2 | Giỏ hàng, đặt đơn, đăng nhập | Task 5, 6, 7 (+ tồn kho, API thanh toán) |
+| 3 | Thanh toán, bàn giao & nghiệp vụ nâng cao | Task 8, 9, 10 |

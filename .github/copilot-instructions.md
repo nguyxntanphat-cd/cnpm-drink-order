@@ -1,0 +1,1 @@
+Follow all conventions in the repository root file `AGENTS.md` (project BrewLite: NestJS + Prisma backend in `backend/`, Next.js App Router + Tailwind + Zustand frontend in `frontend/`). API contracts are in `docs/API.md`, UI design tokens in `docs/DESIGN.md`. User-facing text is Vietnamese; code and identifiers are English. Money is integer VND.

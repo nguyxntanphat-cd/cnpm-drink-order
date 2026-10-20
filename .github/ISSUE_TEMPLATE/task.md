@@ -1,15 +1,17 @@
 ---
-name: Task
-about: Một task trong Product Backlog
-labels: task
+name: Task / User story
+about: Một hạng mục trong Product Backlog
+labels: []
 ---
 
-**Task số:**
-**Sprint:**
-**Người phụ trách (TV):**
+**Task cha:** # · **Người làm:** TV · **Sprint:** · **Story point:**
+**Phụ thuộc:**
 
 ## User story
 Là một ..., tôi muốn ... để ...
 
-## Tiêu chí hoàn thành
+## Tiêu chí chấp nhận
 - [ ]
+
+## Tham khảo
+AGENTS.md §… · docs/API.md · docs/ui/…

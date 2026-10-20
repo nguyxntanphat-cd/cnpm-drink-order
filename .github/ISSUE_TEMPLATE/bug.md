@@ -1,7 +1,7 @@
 ---
 name: Bug
 about: Báo lỗi
-labels: bug
+labels: [bug]
 ---
 
 ## Mô tả lỗi
@@ -12,3 +12,5 @@ labels: bug
 ## Kết quả mong đợi
 
 ## Kết quả thực tế
+
+## Ảnh / log
