@@ -1,6 +1,6 @@
 # Hợp đồng API – BrewLite
 
-Base URL (dev): `http://localhost:3001`. Dữ liệu JSON, tiền là số nguyên VND, thời gian ISO 8601.
+Base URL (dev): `http://localhost:3001` · Swagger (thử API trực tiếp): `http://localhost:3001/docs`. Dữ liệu JSON, tiền là số nguyên VND, thời gian ISO 8601.
 Route có 🔒 cần header `Authorization: Bearer <accessToken>`.
 Lỗi theo định dạng mặc định của NestJS: `{ "statusCode": 400, "message": "...", "error": "Bad Request" }`.
 
@@ -62,6 +62,7 @@ interface Payment { id: number; orderId: number; amount: number; method: Payment
 ## Đơn hàng (TV2 + TV7)
 
 ### POST 🔒 `/orders` – tạo đơn PENDING (Task 6)
+Header tùy chọn: `Idempotency-Key: <uuid>` – gửi lại cùng key trả về đúng đơn đã tạo, không tạo đơn mới (Task 10 – test b).
 ```json
 {
   "items": [

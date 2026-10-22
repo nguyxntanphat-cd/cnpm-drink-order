@@ -79,7 +79,7 @@ Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose u
 
 | TV | Họ tên | GitHub | Vai trò Scrum | Phụ trách chính |
 |---|---|---|---|---|
-| TV1 | | @ | Scrum Master | Khởi tạo dự án, CI, trang Checkout, Docker & bàn giao |
+| TV1 | | @ | Scrum Master | Khung dự án + CI (đã xong), Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao |
 | TV2 | | @ | Product Owner | Prisma schema + seed, API sản phẩm, API đơn hàng |
 | TV3 | | @ | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn |
 | TV4 | | @ | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn |
@@ -153,6 +153,7 @@ Mở http://localhost:3000 → thấy **"Hello BrewLite"** là thành công. B�
 1. Vào tab [**Issues**](https://github.com/nguyxntanphat-cd/cnpm-drink-order/issues), bấm vào nhãn của bạn (`TV1` … `TV7`) để lọc.
 2. Làm theo thứ tự Sprint (nhãn `sprint-1` trước). Đọc kỹ mục **Phụ thuộc** và **Tiêu chí chấp nhận** trong issue.
 3. Ở cột phải của issue, bấm **Assignees → assign yourself** để cả nhóm biết bạn đang làm.
+4. Xem tiến độ từng Sprint ở tab [**Milestones**](https://github.com/nguyxntanphat-cd/cnpm-drink-order/milestones). Việc Scrum (Planning, Daily, Review, Retro) nằm ở các issue nhãn `scrum`.
 
 Việc có thể bắt đầu **ngay bây giờ** (Sprint 1):
 
@@ -164,7 +165,7 @@ Việc có thể bắt đầu **ngay bây giờ** (Sprint 1):
 | TV7 | #18 State machine + test (a) | Viết logic + test trước, không cần chờ ai |
 | TV5 | #22 Auth backend | Đợi #14 có bảng `User`, trong lúc đó đọc tài liệu Passport/JWT |
 | TV6 | #25 API thanh toán | Viết `MockPaymentGateway` + thiết kế trước, tích hợp ở Sprint 2 |
-| TV1 | Scrum Master | Review PR, tạo `docs/scrum/sprint-1.md`, theo dõi burndown |
+| TV1 | #34 Swagger + bộ lọc lỗi, #37 Scrum Sprint 1 | Làm sớm – Swagger giúp cả nhóm thử API; tạo `docs/scrum/sprint-1.md` |
 
 ### Bước 5 – Tạo nhánh riêng cho issue
 

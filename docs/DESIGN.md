@@ -57,6 +57,6 @@ fontFamily: { sans: ['var(--font-inter)', 'system-ui', 'sans-serif'] }, // next/
 
 | Thiết kế | Đề bài | Cách làm |
 |---|---|---|
-| Size M / L | Size S / M / L | Backend hỗ trợ S/M/L; UI hiển thị các size mà API trả về (seed hiện tạo M, L) |
-| "Thanh toán khi nhận hàng" | Bắt buộc **không dùng tiền mặt** | Ẩn/vô hiệu hóa lựa chọn này trong MVP; chỉ dùng "Thanh toán bằng chuyển khoản" (QR mock) |
+| Size M / L | Size S / M / L | Seed tạo đủ S/M/L (đề chấm "chọn size S/M/L"); UI hiển thị các size API trả về, cùng kiểu radio như ảnh |
+| "Thanh toán khi nhận hàng" | Bắt buộc **không dùng tiền mặt** | Vô hiệu hóa lựa chọn này. Thay bằng 3 phương thức mock: **Chuyển khoản QR**, **Ví điện tử**, **Thẻ ngân hàng** (đề chấm "chọn Ví/Thẻ"); dùng cùng kiểu nút như ảnh |
 | Theo dõi shipper, giao hàng | Nhận tại quầy | Timeline dùng `statusHistory`; phần shipper là mở rộng, không bắt buộc |

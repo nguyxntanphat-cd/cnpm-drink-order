@@ -159,6 +159,7 @@ model Topping {
 model Order {
   id            Int                  @id @default(autoincrement())
   code          String               @unique   // "BL-000001"
+  idempotencyKey String?             @unique   // header Idempotency-Key của POST /orders (test b)
   userId        Int
   user          User                 @relation(fields: [userId], references: [id])
   status        OrderStatus          @default(PENDING)
@@ -275,12 +276,14 @@ Chuyển sai → ném `ConflictException` (409) với message `Invalid status tr
 | `/products/[id]` | Chi tiết sản phẩm: size, lượng đá, topping, số lượng | TV4 |
 | `/cart` | Giỏ hàng | TV3 |
 | `/login`, `/register`, `/forgot-password` | Xác thực | TV5 |
-| `/checkout` | "Đơn hàng của bạn": tóm tắt + chọn phương thức thanh toán | TV1 |
+| `/checkout` | "Đơn hàng của bạn": tóm tắt, mã giảm giá, chọn phương thức (QR / Ví / Thẻ) | TV1 |
 | `/payment/[orderId]` | Thanh toán QR: 4 trạng thái chờ / đang xử lý / thất bại / thành công | TV6 |
 | `/orders` | Lịch sử đặt hàng (tab Tất cả / Đang xử lý / Hoàn thành) | TV3 |
-| `/orders/[id]` | Chi tiết đơn + timeline trạng thái | TV4 |
+| `/orders/[id]` | Chi tiết đơn + timeline trạng thái (kiêm màn xác nhận) | TV4 |
+| `/account` | Tài khoản: thông tin, điểm thưởng, đăng xuất | TV1 |
+| `/staff/orders` | *(mở rộng)* Nhân viên cập nhật trạng thái pha chế | chưa giao |
 
-Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*` → chưa đăng nhập thì chuyển `/login?redirect=<url>` (EX-01), giữ nguyên giỏ.
+Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*`, `/account`, `/staff/*` → chưa đăng nhập thì chuyển `/login?redirect=<url>` (EX-01), giữ nguyên giỏ.
 
 ### 7.2 State
 - `stores/cart.store.ts` (Zustand + `persist` localStorage, key `brewlite-cart`):
@@ -308,10 +311,11 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*` → chưa đă
 - Mọi DTO dùng class-validator. Không trả `passwordHash` ra ngoài.
 - Lỗi: dùng exception có sẵn của Nest (`BadRequestException`, `NotFoundException`, `ConflictException`, `UnauthorizedException`).
   Body lỗi: `{ statusCode, message, error }` (mặc định Nest).
+- Swagger ở `http://localhost:3001/docs`: DTO dùng `@ApiProperty()`, controller dùng `@ApiTags()`, route cần đăng nhập thêm `@ApiBearerAuth()`.
 - Lấy user hiện tại bằng decorator `@CurrentUser()` (trong `common/decorators`), route cần đăng nhập dùng `JwtAuthGuard`.
 - Truy cập DB **chỉ qua `PrismaService`**, nghiệp vụ nằm trong service, controller mỏng.
 - Seed (`npm run seed`) phải tạo đủ dữ liệu demo: danh mục, ≥ 8 món (Cà phê sữa, Cappuccino, Americano,
-  Caramel Macchiato…), 9 topping như ảnh thiết kế, 1 user demo `demo@brewlite.vn / 123456`, 1 user STAFF, mã `WELCOME10`.
+  Caramel Macchiato…) có size S/M/L, 9 topping như ảnh thiết kế, 1 user demo `demo@brewlite.vn / 123456`, 1 user STAFF, mã `WELCOME10`.
 
 ## 9. Test
 
