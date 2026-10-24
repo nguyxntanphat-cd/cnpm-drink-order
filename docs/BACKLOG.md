@@ -11,7 +11,7 @@ Nguồn sự thật là GitHub Issues + [Milestones](https://github.com/nguyxnta
 |---|---|---|---|---|---|
 | #11 ✅ | T1.1 | Khởi tạo backend NestJS + Prisma + Postgres (docker) | TV1 | 3 | #1 Khởi tạo dự án |
 | #12 ✅ | T1.2 | Khởi tạo frontend Next.js + Tailwind + TanStack Query + api-client | TV1 | 2 | #1 Khởi tạo dự án |
-| #13 | T1.3 | Design system: Tailwind tokens + components/ui + layout | TV4 | 3 | #3 Trang Menu |
+| #13 | T1.3 | Design system: Tailwind tokens + components/ui + layout | TV4 | 3 | #1 Khởi tạo dự án |
 | #14 | T2.1 | Prisma schema, migration đầu tiên và seed dữ liệu | TV2 | 3 | #2 API sản phẩm |
 | #15 | T2.2 | API GET /categories, /products, /products/:id, /toppings | TV2 | 3 | #2 API sản phẩm |
 | #16 | T3.1 | Trang Menu (/): lưới sản phẩm, lọc danh mục, tìm kiếm | TV3 | 5 | #3 Trang Menu |
@@ -41,13 +41,13 @@ Scrum: issue #38 (Planning, Daily, burndown, Review, Retrospective).
 | Issue | Mã | Việc | Người | SP | Task cha |
 |---|---|---|---|---|---|
 | #27 | T8.2 | Trang thanh toán /payment/[orderId]: QR + 4 trạng thái | TV6 | 5 | #8 Thanh toán không tiền mặt |
-| #28 | T8.3 | Hủy đơn: POST /orders/:id/cancel + hoàn tiền mô phỏng + nút Hủy | TV6 | 3 | #9 Xác nhận, lịch sử & bàn giao |
+| #28 | T8.3 | Hủy đơn: POST /orders/:id/cancel + hoàn tiền mô phỏng + nút Hủy | TV6 | 3 | #8 Thanh toán không tiền mặt |
 | #29 | T9.1 | API GET /orders/me và GET /orders/:id | TV2 | 2 | #9 Xác nhận, lịch sử & bàn giao |
 | #30 | T9.2 | Trang Lịch sử đặt hàng /orders (tab Tất cả / Đang xử lý / Hoàn thành) | TV3 | 3 | #9 Xác nhận, lịch sử & bàn giao |
 | #31 | T9.3 | Trang chi tiết đơn /orders/[id] + timeline trạng thái + màn xác nhận | TV4 | 5 | #9 Xác nhận, lịch sử & bàn giao |
 | #32 | T9.4 | docker-compose chạy cả 3 dịch vụ + README bàn giao + kịch bản demo | TV1 | 3 | #9 Xác nhận, lịch sử & bàn giao |
 | #33 | T10.3 | Khuyến mãi + điểm thưởng: POST /promotions/validate, applyPromotion, cộng điểm | TV7 | 3 | #10 Nghiệp vụ backend |
-| #35 | T9.5 | Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | TV1 | 3 | #10 Nghiệp vụ backend |
+| #35 | T9.5 | Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | TV1 | 3 | #9 Xác nhận, lịch sử & bàn giao |
 | #36 | T10.4 | (Mở rộng) Trang nhân viên /staff/orders cập nhật trạng thái pha chế | - | 3 | #10 Nghiệp vụ backend |
 
 Scrum: issue #39 (Planning, Daily, burndown, Review, Retrospective).
