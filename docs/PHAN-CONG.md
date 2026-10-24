@@ -6,15 +6,15 @@ Xem trực tiếp: [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order
 
 ## Thành viên
 
-| TV | Họ tên | GitHub | Vai trò | Code | Sơ đồ |
-|---|---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | #34, #21, #32, #35 | #40 |
-| TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | Lead · Product Owner | #14, #15, #20, #29 | #41 |
-| TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Developer | #16, #19, #30 | #42 |
-| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Developer | #13, #17, #31 | #43 |
-| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Developer | #22, #23, #24 | #44 |
-| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Developer | #25, #27, #28 | #45 |
-| TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Developer | #18, #26, #33 | #46 |
+| TV | Họ tên | GitHub | Vai trò | Issue code |
+|---|---|---|---|---|
+| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | #34, #21, #32, #35 |
+| TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | Lead · Product Owner | #14, #15, #20, #29 |
+| TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Developer | #16, #19, #30 |
+| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Developer | #13, #17, #31 |
+| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Developer | #22, #23, #24 |
+| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Developer | #25, #27, #28 |
+| TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Developer | #18, #26, #33 |
 
 ## Task code (10 Task của đề BrewLite)
 
@@ -47,22 +47,10 @@ Xem trực tiếp: [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order
 | Task 10 – Nghiệp vụ backend | #33 [T10.3] Khuyến mãi + điểm thưởng: POST /promotions/validate, applyPromotion, cộng điểm | Backend | Nghiêm Hân | `han/33-promotions-loyalty` | 3 |
 | Task 10 – Nghiệp vụ backend | #36 [T10.4] (Mở rộng) Trang nhân viên cập nhật trạng thái | Frontend | Ai xong sớm nhận | `optional/36-staff-orders-page` | 3 |
 
-## Sơ đồ (mỗi người ít nhất 1)
 
-| Issue | Sơ đồ | Người thực hiện | Nhánh |
-|---|---|---|---|
-| #40 | Sơ đồ kiến trúc hệ thống + triển khai | Cao Thanh Tuyền | `tuyen/diagram-architecture` |
-| #41 | ERD cơ sở dữ liệu | Nguyễn Tấn Phát | `phat/diagram-erd` |
-| #42 | Use Case tổng quát + Activity luồng đặt hàng | Lê Thế Hào | `hao/diagram-usecase` |
-| #43 | Luồng màn hình + cây Component | Trần Điền Kha | `kha/diagram-screen-flow` |
-| #44 | Sequence Đăng ký / Đăng nhập JWT | Ngọc Thanh | `thanh/diagram-sequence-auth` |
-| #45 | Sequence Đặt & Thanh toán + đặc tả Use Case trọng tâm | Trần Vy | `vy/diagram-sequence-order-payment` |
-| #46 | State Machine đơn hàng | Nghiêm Hân | `han/diagram-state-machine` |
+## Quản lý
 
-## Quản lý dự án & báo cáo
-
-| Issue | Việc | Người thực hiện |
-|---|---|---|
-| #37, #38, #39 | Scrum Sprint 1–3: Planning, Daily, burndown, Review, Retrospective | Cao Thanh Tuyền (tổ chức), Nguyễn Tấn Phát (nghiệm thu) |
-| #47 | Báo cáo Assignment 2 bằng LaTeX, xuất 7 bản bìa cá nhân | Nguyễn Tấn Phát (tổng hợp) + mỗi người phần sơ đồ/minh chứng của mình |
-| – | Review và merge Pull Request vào `main` | Nguyễn Tấn Phát (Lead) |
+| Việc | Người thực hiện |
+|---|---|
+| Review và merge Pull Request vào `main` | Nguyễn Tấn Phát (Lead) |
+| Tổ chức Daily / Review / Retrospective | Cao Thanh Tuyền (Scrum Master) |

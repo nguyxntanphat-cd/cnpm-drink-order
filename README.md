@@ -16,9 +16,8 @@ Nhóm 7 thành viên, làm theo **Agile Scrum** trong 3 Sprint. Thương hiệu 
 | [docs/SCENARIOS.md](docs/SCENARIOS.md) | Kịch bản nghiệp vụ, ngoại lệ, use case |
 | [docs/API.md](docs/API.md) | Hợp đồng API giữa frontend và backend |
 | [docs/DESIGN.md](docs/DESIGN.md) + [docs/ui/](docs/ui/) | Thiết kế giao diện, design token |
-| [docs/PHAN-CONG.md](docs/PHAN-CONG.md) | **Bảng phân công**: task / sub-task / người làm / nhánh / sơ đồ |
+| [docs/PHAN-CONG.md](docs/PHAN-CONG.md) | **Bảng phân công**: task / sub-task / người làm / nhánh |
 | [docs/BACKLOG.md](docs/BACKLOG.md) | Product Backlog, story point, thứ tự phụ thuộc |
-| [report/](report/) | Báo cáo Assignment 2 (LaTeX) – xuất 7 bản bìa cá nhân |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Quy trình Git / Pull Request / Scrum |
 
 ## Công nghệ
@@ -80,13 +79,13 @@ Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose u
 
 | TV | Họ tên | GitHub | Vai trò Scrum | Phụ trách chính |
 |---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao · Sơ đồ kiến trúc |
-| TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | **Lead** · Product Owner | Khung dự án + CI, Prisma schema + seed, API sản phẩm, API đơn hàng · ERD · review/merge PR, báo cáo |
-| TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn · Sơ đồ Use Case + Activity |
-| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn · Sơ đồ luồng màn hình |
-| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend) · Sequence đăng nhập |
-| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn · Sequence đặt & thanh toán + đặc tả UC |
-| TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng · Sơ đồ trạng thái |
+| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao |
+| TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | **Lead** · Product Owner | Khung dự án + CI, Prisma schema + seed, API sản phẩm, API đơn hàng |
+| TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn |
+| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn |
+| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend) |
+| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn |
+| TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng |
 
 Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order/issues) → lọc **Assignee** là bạn. Chi tiết từng issue: [docs/BACKLOG.md](docs/BACKLOG.md).
 
@@ -103,11 +102,10 @@ Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink
 ## ⚠️ Quy định của thầy (buổi 23/10/2026)
 
 - **Lịch sử commit là minh chứng duy nhất. Không có commit → 0 điểm.** Tự commit bằng tài khoản của mình, không commit hộ.
-- **Ai cũng phải code** (frontend hoặc backend) **và vẽ ít nhất 1 sơ đồ**. Chỉ viết tài liệu → tối đa 3 điểm.
+- **Ai cũng phải code** (frontend hoặc backend). Chỉ viết tài liệu → tối đa 3 điểm.
 - Lead chia nhánh, thành viên code trên nhánh của mình rồi tạo **Pull Request**, **Lead review và merge vào `main`**.
 - Backend phải kiểm thử API bằng **Swagger** (`http://localhost:3001/docs`) hoặc **Postman** và chụp ảnh minh chứng.
 - Hiểu code mình viết (Props, State, luồng dữ liệu) – thầy **chọn ngẫu nhiên nhóm lên hỏi trực tiếp** từ tuần 8–9; vắng mặt = mất điểm chuyên cần.
-- Báo cáo Assignment 2 viết bằng **LaTeX** (`report/`), **mỗi người in 1 bản có bìa ghi tên + MSSV của mình**.
 
 Bảng phân công đích danh từng việc: [docs/PHAN-CONG.md](docs/PHAN-CONG.md).
 
@@ -176,7 +174,7 @@ Việc có thể bắt đầu **ngay bây giờ** (Sprint 1):
 | TV7 | #18 State machine + test (a) | Viết logic + test trước, không cần chờ ai |
 | TV5 | #22 Auth backend | Đợi #14 có bảng `User`, trong lúc đó đọc tài liệu Passport/JWT |
 | TV6 | #25 API thanh toán | Viết `MockPaymentGateway` + thiết kế trước, tích hợp ở Sprint 2 |
-| TV1 | #34 Swagger + bộ lọc lỗi, #37 Scrum Sprint 1 | Làm sớm – Swagger giúp cả nhóm thử API; tạo `docs/scrum/sprint-1.md` |
+| TV1 | #34 Swagger + bộ lọc lỗi | Làm sớm – Swagger giúp cả nhóm thử API |
 
 ### Bước 5 – Chuyển sang nhánh của issue
 
@@ -188,15 +186,15 @@ git checkout hao/16-menu-page
 git merge origin/main             # lấy code mới nhất của cả nhóm trước khi code
 ```
 
-| Người | Nhánh code (theo thứ tự nên làm) | Nhánh sơ đồ |
-|---|---|---|
-| TV1 Tuyền | `tuyen/34-swagger` → `tuyen/21-checkout-page` → `tuyen/35-account-page` → `tuyen/32-docker-handover` | `tuyen/diagram-architecture` |
-| TV2 Phát | `phat/14-prisma-schema-seed` → `phat/15-products-api` → `phat/20-create-order-api` → `phat/29-order-history-api` | `phat/diagram-erd`, `phat/report` |
-| TV3 Hào | `hao/16-menu-page` → `hao/19-cart` → `hao/30-order-history-page` | `hao/diagram-usecase` |
-| TV4 Kha | `kha/13-ui-kit` → `kha/17-product-detail-page` → `kha/31-order-detail-page` | `kha/diagram-screen-flow` |
-| TV5 Thanh | `thanh/22-auth-api` → `thanh/23-auth-pages` → `thanh/24-auth-guard` | `thanh/diagram-sequence-auth` |
-| TV6 Vy | `vy/25-payments-api` → `vy/27-payment-page` → `vy/28-cancel-order` | `vy/diagram-sequence-order-payment` |
-| TV7 Hân | `han/18-order-state-machine` → `han/26-inventory-locking` → `han/33-promotions-loyalty` | `han/diagram-state-machine` |
+| Người | Nhánh (theo thứ tự nên làm) |
+|---|---|
+| TV1 Tuyền | `tuyen/34-swagger` → `tuyen/21-checkout-page` → `tuyen/35-account-page` → `tuyen/32-docker-handover` |
+| TV2 Phát | `phat/14-prisma-schema-seed` → `phat/15-products-api` → `phat/20-create-order-api` → `phat/29-order-history-api` |
+| TV3 Hào | `hao/16-menu-page` → `hao/19-cart` → `hao/30-order-history-page` |
+| TV4 Kha | `kha/13-ui-kit` → `kha/17-product-detail-page` → `kha/31-order-detail-page` |
+| TV5 Thanh | `thanh/22-auth-api` → `thanh/23-auth-pages` → `thanh/24-auth-guard` |
+| TV6 Vy | `vy/25-payments-api` → `vy/27-payment-page` → `vy/28-cancel-order` |
+| TV7 Hân | `han/18-order-state-machine` → `han/26-inventory-locking` → `han/33-promotions-loyalty` |
 
 Việc tùy chọn: `optional/36-staff-orders-page`. **Không code thẳng trên `main`.**
 

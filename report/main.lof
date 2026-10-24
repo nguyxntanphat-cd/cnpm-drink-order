@@ -1,0 +1,18 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Sơ đồ Use Case tổng quát (Lê Thế Hào – issue \#42)}}{1}{figure.caption.3}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Sơ đồ hoạt động luồng đặt hàng (Lê Thế Hào – issue \#42)}}{1}{figure.caption.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Kiến trúc hệ thống và phân tầng backend (Cao Thanh Tuyền – issue \#40)}}{2}{figure.caption.5}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Sơ đồ thực thể – quan hệ (Nguyễn Tấn Phát – issue \#41)}}{2}{figure.caption.6}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Sơ đồ tuần tự Đăng ký / Đăng nhập JWT (Ngọc Thanh – issue \#44)}}{2}{figure.caption.7}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Sơ đồ tuần tự Đặt \& Thanh toán đơn hàng (Trần Vy – issue \#45)}}{3}{figure.caption.8}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Sơ đồ trạng thái đơn hàng (Nghiêm Hân – issue \#46)}}{3}{figure.caption.9}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Luồng màn hình và cây Component (Trần Điền Kha – issue \#43)}}{3}{figure.caption.10}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Màn hình Menu}}{3}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Màn hình thanh toán}}{4}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces GET /products (Nguyễn Tấn Phát)}}{4}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces POST /auth/login (Ngọc Thanh)}}{4}{figure.caption.14}%
+\contentsline {figure}{\numberline {13}{\ignorespaces POST /orders (Nguyễn Tấn Phát)}}{4}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces POST /payments với Idempotency-Key (Trần Vy)}}{5}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Kết quả test (a)}}{5}{figure.caption.17}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Kết quả test (b)}}{5}{figure.caption.18}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Kết quả test (c)}}{6}{figure.caption.19}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Biểu đồ burndown}}{6}{figure.caption.20}%

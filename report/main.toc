@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Phân tích yêu cầu}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Sơ đồ Use Case}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Đặc tả Use Case trọng tâm: Đặt \& Thanh toán đơn hàng}{1}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Thiết kế hệ thống}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Kiến trúc tổng thể}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Cơ sở dữ liệu}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Luồng xử lý}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Giao diện}{3}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Hiện thực}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Giao diện}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Kiểm thử API bằng Swagger / Postman}{4}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Kiểm thử}{5}{section.4}%
+\contentsline {section}{\numberline {5}Quản lý dự án}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Quy trình Git}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Bảng phân công}{6}{subsection.5.2}%

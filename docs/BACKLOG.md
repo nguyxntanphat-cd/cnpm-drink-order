@@ -1,7 +1,7 @@
 # Product Backlog & phân công
 
 Đề có 10 task (mỗi task 1 điểm). Mỗi task được chia thành các issue con trên GitHub để **7 người code khối lượng ngang nhau (13 story point/người)**.
-Bảng phân công đích danh (gồm sơ đồ, nhánh): [PHAN-CONG.md](PHAN-CONG.md). Nguồn sự thật là GitHub Issues + [Milestones](https://github.com/nguyxntanphat-cd/cnpm-drink-order/milestones) – file này chỉ là bảng tổng hợp.
+Bảng phân công đích danh (gồm nhánh): [PHAN-CONG.md](PHAN-CONG.md). Nguồn sự thật là GitHub Issues + [Milestones](https://github.com/nguyxntanphat-cd/cnpm-drink-order/milestones) – file này chỉ là bảng tổng hợp.
 
 ## Theo Sprint
 
@@ -19,8 +19,6 @@ Bảng phân công đích danh (gồm sơ đồ, nhánh): [PHAN-CONG.md](PHAN-CO
 | #18 | T10.1 | Order State Machine + lịch sử trạng thái + PATCH /orders/:id/status + test (a) | TV7 | 5 | #10 Nghiệp vụ backend |
 | #34 | T1.4 | Swagger /docs + bộ lọc lỗi toàn cục cho backend | TV1 | 2 | #1 Khởi tạo dự án |
 
-Scrum: issue #37 (Planning, Daily, burndown, Review, Retrospective).
-
 ### Sprint 2 – Giỏ hàng, đặt đơn, đăng nhập
 
 | Issue | Mã | Việc | Người | SP | Task cha |
@@ -33,8 +31,6 @@ Scrum: issue #37 (Planning, Daily, burndown, Review, Retrospective).
 | #24 | T7.3 | Auth store, gắn token vào api-client, route guard (EX-01) | TV5 | 3 | #7 Đăng ký/Đăng nhập (JWT) |
 | #25 | T8.1 | API POST /payments + Mock gateway + Idempotency-Key + test (b) | TV6 | 5 | #8 Thanh toán không tiền mặt |
 | #26 | T10.2 | Kiểm soát tồn kho: transaction + optimistic locking + test (c) | TV7 | 5 | #10 Nghiệp vụ backend |
-
-Scrum: issue #38 (Planning, Daily, burndown, Review, Retrospective).
 
 ### Sprint 3 – Thanh toán, bàn giao & nghiệp vụ nâng cao
 
@@ -49,8 +45,6 @@ Scrum: issue #38 (Planning, Daily, burndown, Review, Retrospective).
 | #33 | T10.3 | Khuyến mãi + điểm thưởng: POST /promotions/validate, applyPromotion, cộng điểm | TV7 | 3 | #10 Nghiệp vụ backend |
 | #35 | T9.5 | Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | TV1 | 3 | #9 Xác nhận, lịch sử & bàn giao |
 | #36 | T10.4 | (Mở rộng) Trang nhân viên /staff/orders cập nhật trạng thái pha chế | - | 3 | #10 Nghiệp vụ backend |
-
-Scrum: issue #39 (Planning, Daily, burndown, Review, Retrospective).
 
 ## Theo thành viên
 

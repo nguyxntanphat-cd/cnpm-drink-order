@@ -6,7 +6,7 @@
 
 - **Lịch sử commit là minh chứng duy nhất** bạn có tham gia. **Không có commit → 0 điểm.**
 - **Tự commit bằng tài khoản GitHub của mình.** Không commit hộ, không nhờ người khác push giúp.
-- **Ai cũng phải code** (frontend hoặc backend) **và vẽ ít nhất 1 sơ đồ**. Chỉ làm tài liệu → tối đa 3 điểm.
+- **Ai cũng phải code** (frontend hoặc backend). Chỉ làm tài liệu → tối đa 3 điểm.
 - Backend phải **tự kiểm thử API bằng Swagger/Postman** và chụp ảnh minh chứng trước khi bàn giao cho frontend.
 - Được dùng AI hỗ trợ nhưng **phải hiểu và tự sửa được code của mình** – thầy hỏi vấn đáp trực tiếp trên code.
 
@@ -32,7 +32,7 @@ git push
 ## 2. Commit (Conventional Commits)
 
 `<type>(<scope>): <mô tả tiếng Việt>` – type: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `style`.
-Scope là module: `auth`, `products`, `cart`, `orders`, `payments`, `inventory`, `promotions`, `ui`, `devops`, `report`.
+Scope là module: `auth`, `products`, `cart`, `orders`, `payments`, `inventory`, `promotions`, `ui`, `devops`.
 
 - Commit **nhỏ và thường xuyên** (mỗi khi xong một phần chạy được), không dồn 1 commit khổng lồ cuối kỳ.
 - Message nói rõ đã làm gì – thầy đọc lịch sử commit để chấm.
@@ -63,4 +63,4 @@ git add . && git commit && git push
 
 ## 6. Không commit
 
-`.env`, `node_modules/`, `dist/`, `.next/`, `report/out/`, file IDE, dữ liệu cá nhân.
+`.env`, `node_modules/`, `dist/`, `.next/`, file IDE, dữ liệu cá nhân.

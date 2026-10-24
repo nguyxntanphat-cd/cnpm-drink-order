@@ -336,7 +336,7 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*`, `/account`, `
 
 1. Code chạy được, không lỗi build, đạt tiêu chí chấp nhận của issue.
 2. Commit rõ ràng, PR được Lead review và merge vào `main`.
-5. Backend: đã kiểm thử API bằng Swagger/Postman, có ảnh minh chứng trong `report/figures/api/`.
+5. Backend: đã kiểm thử API bằng Swagger/Postman, có ảnh minh chứng trong `docs/minh-chung/api/`.
 3. API có validate đầu vào; UI có loading/lỗi cơ bản.
 4. README / docs được cập nhật nếu có thay đổi cách chạy hoặc API.
 
