@@ -1,7 +1,7 @@
 # Product Backlog & phân công
 
 Đề có 10 task (mỗi task 1 điểm). Mỗi task được chia thành các issue con trên GitHub để **7 người code khối lượng ngang nhau (13 story point/người)**.
-Nguồn sự thật là GitHub Issues + [Milestones](https://github.com/nguyxntanphat-cd/cnpm-drink-order/milestones) – file này chỉ là bảng tổng hợp.
+Bảng phân công đích danh (gồm sơ đồ, nhánh): [PHAN-CONG.md](PHAN-CONG.md). Nguồn sự thật là GitHub Issues + [Milestones](https://github.com/nguyxntanphat-cd/cnpm-drink-order/milestones) – file này chỉ là bảng tổng hợp.
 
 ## Theo Sprint
 
@@ -56,7 +56,7 @@ Scrum: issue #39 (Planning, Daily, burndown, Review, Retrospective).
 
 | TV | Thành viên | Vai trò | Issue | Tổng SP |
 |---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền (@ThanhTuyencr30) | Scrum Master · DevOps/Fullstack | #21 T6.2, #32 T9.4, #34 T1.4, #35 T9.5 (#11, #12 đã xong) | 13 |
+| TV1 | Cao Thanh Tuyền (@ThanhTuyencr30) | Scrum Master · DevOps/Fullstack | #21 T6.2, #32 T9.4, #34 T1.4, #35 T9.5 | 13 |
 | TV2 | Nguyễn Tấn Phát (@nguyxntanphat-cd) | Product Owner · Backend | #14 T2.1, #15 T2.2, #20 T6.1, #29 T9.1 | 13 |
 | TV3 | Lê Thế Hào (@SHI-HAO-1201) | Dev · Frontend | #16 T3.1, #19 T5.1, #30 T9.2 | 13 |
 | TV4 | Trần Điền Kha (@TDKha12) | Dev · Frontend (UI kit) | #13 T1.3, #17 T4.1, #31 T9.3 | 13 |

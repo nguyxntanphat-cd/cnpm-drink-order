@@ -1,0 +1,54 @@
+% Báo cáo Assignment 2 – BrewLite. Biên dịch bằng XeLaTeX.
+% In bản của từng người: ./build.sh  (đọc members.csv, xuất out/BrewLite-<MSSV>.pdf)
+% Biên dịch thử 1 bản:   latexmk -xelatex main.tex
+\documentclass[13pt,a4paper]{extarticle}
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}   % tương đương Times New Roman, đủ dấu tiếng Việt
+\usepackage[a4paper,left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx,longtable,array,booktabs,float,caption,xcolor,enumitem,fancyhdr,tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{indentfirst}
+\setlength{\parskip}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\graphicspath{{figures/}}
+\captionsetup{labelsep=period}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\listfigurename}{Danh sách hình}
+
+\input{config}
+
+% Tên + MSSV của người in bản này (build.sh truyền vào); mặc định để biên dịch thử.
+\providecommand{\hoten}{Họ và tên sinh viên}
+\providecommand{\mssv}{MSSV}
+
+% \hinh{tên-file-không-đuôi}{chú thích}: chèn ảnh trong figures/; chưa có ảnh thì hiện khung chờ.
+\newcommand{\hinh}[2]{%
+  \begin{figure}[H]\centering
+  \IfFileExists{figures/#1.png}{\includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{#1}}%
+    {\fbox{\parbox[c][4cm][c]{0.9\linewidth}{\centering\color{gray}Chưa có ảnh: figures/#1.png}}}%
+  \caption{#2}\label{fig:#1}
+  \end{figure}}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small \detai}
+\fancyhead[R]{\small \hoten{} – \mssv}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+\input{cover}
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\clearpage
+\pagenumbering{arabic}
+
+% 5 phần = 5 Task lớn của Assignment 2 (mỗi task 2 điểm). Đổi tiêu đề trong từng file cho đúng đề.
+\input{sections/01-yeu-cau}
+\input{sections/02-thiet-ke}
+\input{sections/03-hien-thuc}
+\input{sections/04-kiem-thu}
+\input{sections/05-quan-ly}
+\end{document}

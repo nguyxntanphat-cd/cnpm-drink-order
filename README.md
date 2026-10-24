@@ -16,7 +16,9 @@ Nhóm 7 thành viên, làm theo **Agile Scrum** trong 3 Sprint. Thương hiệu 
 | [docs/SCENARIOS.md](docs/SCENARIOS.md) | Kịch bản nghiệp vụ, ngoại lệ, use case |
 | [docs/API.md](docs/API.md) | Hợp đồng API giữa frontend và backend |
 | [docs/DESIGN.md](docs/DESIGN.md) + [docs/ui/](docs/ui/) | Thiết kế giao diện, design token |
-| [docs/BACKLOG.md](docs/BACKLOG.md) | Product Backlog, phân công, thứ tự phụ thuộc |
+| [docs/PHAN-CONG.md](docs/PHAN-CONG.md) | **Bảng phân công**: task / sub-task / người làm / nhánh / sơ đồ |
+| [docs/BACKLOG.md](docs/BACKLOG.md) | Product Backlog, story point, thứ tự phụ thuộc |
+| [report/](report/) | Báo cáo Assignment 2 (LaTeX) – xuất 7 bản bìa cá nhân |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Quy trình Git / Pull Request / Scrum |
 
 ## Công nghệ
@@ -50,7 +52,6 @@ Yêu cầu: **Node.js 24 LTS** (kèm npm 11), Docker.
 ```bash
 git clone https://github.com/nguyxntanphat-cd/cnpm-drink-order.git
 cd cnpm-drink-order
-git checkout develop
 docker compose up -d db                       # PostgreSQL ở localhost:5432
 
 # Terminal 1 – backend: http://localhost:3001
@@ -79,13 +80,13 @@ Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose u
 
 | TV | Họ tên | GitHub | Vai trò Scrum | Phụ trách chính |
 |---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Khung dự án + CI (đã xong), Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao |
-| TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | Product Owner | Prisma schema + seed, API sản phẩm, API đơn hàng |
-| TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn |
-| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn |
-| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend) |
-| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn |
-| TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng |
+| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao · Sơ đồ kiến trúc |
+| TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | **Lead** · Product Owner | Khung dự án + CI, Prisma schema + seed, API sản phẩm, API đơn hàng · ERD · review/merge PR, báo cáo |
+| TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn · Sơ đồ Use Case + Activity |
+| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn · Sơ đồ luồng màn hình |
+| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend) · Sequence đăng nhập |
+| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn · Sequence đặt & thanh toán + đặc tả UC |
+| TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng · Sơ đồ trạng thái |
 
 Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order/issues) → lọc **Assignee** là bạn. Chi tiết từng issue: [docs/BACKLOG.md](docs/BACKLOG.md).
 
@@ -98,6 +99,17 @@ Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink
 | 3 | Thanh toán, bàn giao & nghiệp vụ nâng cao | Task 8, 9, 10 |
 
 ---
+
+## ⚠️ Quy định của thầy (buổi 23/10/2026)
+
+- **Lịch sử commit là minh chứng duy nhất. Không có commit → 0 điểm.** Tự commit bằng tài khoản của mình, không commit hộ.
+- **Ai cũng phải code** (frontend hoặc backend) **và vẽ ít nhất 1 sơ đồ**. Chỉ viết tài liệu → tối đa 3 điểm.
+- Lead chia nhánh, thành viên code trên nhánh của mình rồi tạo **Pull Request**, **Lead review và merge vào `main`**.
+- Backend phải kiểm thử API bằng **Swagger** (`http://localhost:3001/docs`) hoặc **Postman** và chụp ảnh minh chứng.
+- Hiểu code mình viết (Props, State, luồng dữ liệu) – thầy **chọn ngẫu nhiên nhóm lên hỏi trực tiếp** từ tuần 8–9; vắng mặt = mất điểm chuyên cần.
+- Báo cáo Assignment 2 viết bằng **LaTeX** (`report/`), **mỗi người in 1 bản có bìa ghi tên + MSSV của mình**.
+
+Bảng phân công đích danh từng việc: [docs/PHAN-CONG.md](docs/PHAN-CONG.md).
 
 ## 🚀 Hướng dẫn bắt đầu code
 
@@ -121,11 +133,10 @@ git config --global user.email "email-github@cua-ban.com"
 ### Bước 2 – Vào repo và lấy code về (một lần)
 
 1. Mở email, bấm **chấp nhận lời mời** vào repo (nhóm trưởng gửi).
-2. Clone và chuyển sang nhánh `develop`:
+2. Clone repo về máy:
    ```bash
    git clone https://github.com/nguyxntanphat-cd/cnpm-drink-order.git
    cd cnpm-drink-order
-   git checkout develop
    ```
 
 ### Bước 3 – Chạy thử dự án (một lần)
@@ -169,25 +180,25 @@ Việc có thể bắt đầu **ngay bây giờ** (Sprint 1):
 
 ### Bước 5 – Chuyển sang nhánh của issue
 
-Mỗi issue **đã có sẵn nhánh riêng** tên `feature/<số issue>-<tên>` – tên nhánh ghi ở đầu mô tả issue (dòng **Nhánh:**).
+Lead đã **chia sẵn nhánh cho từng người**, mỗi issue một nhánh, tên bắt đầu bằng tên bạn. Tên nhánh ghi ở dòng **Nhánh:** đầu mô tả issue.
 Ví dụ Hào làm issue #16:
 ```bash
 git fetch origin
-git checkout feature/16-menu-page
-git merge origin/develop          # lấy code mới nhất của cả nhóm trước khi code
+git checkout hao/16-menu-page
+git merge origin/main             # lấy code mới nhất của cả nhóm trước khi code
 ```
 
-| Người | Nhánh của bạn (theo thứ tự nên làm) |
-|---|---|
-| TV1 Tuyền | `feature/34-swagger` → `feature/21-checkout-page` → `feature/35-account-page` → `feature/32-docker-handover` |
-| TV2 Phát | `feature/14-prisma-schema-seed` → `feature/15-products-api` → `feature/20-create-order-api` → `feature/29-order-history-api` |
-| TV3 Hào | `feature/16-menu-page` → `feature/19-cart` → `feature/30-order-history-page` |
-| TV4 Kha | `feature/13-ui-kit` → `feature/17-product-detail-page` → `feature/31-order-detail-page` |
-| TV5 Thanh | `feature/22-auth-api` → `feature/23-auth-pages` → `feature/24-auth-guard` |
-| TV6 Vy | `feature/25-payments-api` → `feature/27-payment-page` → `feature/28-cancel-order` |
-| TV7 Hân | `feature/18-order-state-machine` → `feature/26-inventory-locking` → `feature/33-promotions-loyalty` |
+| Người | Nhánh code (theo thứ tự nên làm) | Nhánh sơ đồ |
+|---|---|---|
+| TV1 Tuyền | `tuyen/34-swagger` → `tuyen/21-checkout-page` → `tuyen/35-account-page` → `tuyen/32-docker-handover` | `tuyen/diagram-architecture` |
+| TV2 Phát | `phat/14-prisma-schema-seed` → `phat/15-products-api` → `phat/20-create-order-api` → `phat/29-order-history-api` | `phat/diagram-erd`, `phat/report` |
+| TV3 Hào | `hao/16-menu-page` → `hao/19-cart` → `hao/30-order-history-page` | `hao/diagram-usecase` |
+| TV4 Kha | `kha/13-ui-kit` → `kha/17-product-detail-page` → `kha/31-order-detail-page` | `kha/diagram-screen-flow` |
+| TV5 Thanh | `thanh/22-auth-api` → `thanh/23-auth-pages` → `thanh/24-auth-guard` | `thanh/diagram-sequence-auth` |
+| TV6 Vy | `vy/25-payments-api` → `vy/27-payment-page` → `vy/28-cancel-order` | `vy/diagram-sequence-order-payment` |
+| TV7 Hân | `han/18-order-state-machine` → `han/26-inventory-locking` → `han/33-promotions-loyalty` | `han/diagram-state-machine` |
 
-Việc tùy chọn: `feature/36-staff-orders-page`. Không code thẳng trên `develop` / `main`.
+Việc tùy chọn: `optional/36-staff-orders-page`. **Không code thẳng trên `main`.**
 
 ### Bước 6 – Code (có thể nhờ AI)
 
@@ -211,17 +222,17 @@ Tất cả không lỗi thì commit (commit nhỏ, nhiều lần cũng được)
 ```bash
 git add .
 git commit -m "feat(products): trang menu hiển thị lưới sản phẩm"
-git push -u origin feature/16-menu-page
+git push -u origin hao/16-menu-page
 ```
 Mẫu message: `feat(...)` thêm tính năng · `fix(...)` sửa lỗi · `test(...)` thêm test · `docs: ...` tài liệu.
 
 ### Bước 8 – Tạo Pull Request
 
 1. Lên GitHub sẽ thấy nút vàng **Compare & pull request** → bấm.
-2. Kiểm tra **base: `develop`** ← **compare: nhánh của bạn**.
+2. Kiểm tra **base: `main`** ← **compare: nhánh của bạn**.
 3. Điền mẫu có sẵn, dòng đầu ghi `Closes #16` để issue tự đóng khi merge. Đổi giao diện thì dán ảnh chụp màn hình.
-4. Bên phải chọn **Reviewers**: một bạn trong nhóm (ưu tiên người làm phần liên quan).
-5. Đợi **CI xanh ✅** và được approve → bấm **Squash and merge** → **Delete branch**.
+4. Bên phải chọn **Reviewers: @nguyxntanphat-cd** (Lead).
+5. Đợi **CI xanh ✅** → Lead review và merge vào `main` (giữ nguyên các commit của bạn làm minh chứng).
 
 Bị yêu cầu sửa → sửa trên chính nhánh đó, `git commit` + `git push` lại, PR tự cập nhật.
 
@@ -229,8 +240,8 @@ Bị yêu cầu sửa → sửa trên chính nhánh đó, `git commit` + `git pu
 
 ```bash
 git fetch origin
-git checkout feature/<nhánh-issue-tiếp-theo>
-git merge origin/develop     # bắt buộc: lấy code mới nhất (gồm phần bạn vừa merge)
+git checkout <tên>/<nhánh-issue-tiếp-theo>
+git merge origin/main        # bắt buộc: lấy code mới nhất (gồm phần bạn vừa merge)
 ```
 Quay lại **Bước 6**.
 
@@ -243,7 +254,7 @@ Quay lại **Bước 6**.
 | Trang báo "Không kết nối được backend" | Backend chưa chạy, hoặc thiếu file `frontend/.env.local` |
 | `npm warn install-scripts ...` khi cài thư viện mới | Chạy `npm install-scripts approve <tên-thư-viện>` |
 | Sau khi `git pull` bị lỗi thiếu thư viện / bảng | Chạy lại `npm install` và `npm run prisma:migrate` trong `backend` |
-| Pull Request bị **conflict** | `git pull origin develop` trên nhánh của bạn, sửa chỗ conflict, commit + push lại |
+| Pull Request bị **conflict** | `git fetch origin && git merge origin/main` trên nhánh của bạn, sửa chỗ conflict, commit + push lại |
 | CI đỏ ❌ | Bấm **Details** cạnh dấu ❌ xem bước nào lỗi, chạy lại lệnh đó ở máy, sửa rồi push |
 
 Vẫn kẹt quá 30 phút → hỏi trong nhóm chat hoặc comment ngay trong issue.

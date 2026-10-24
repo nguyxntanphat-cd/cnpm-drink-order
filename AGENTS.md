@@ -326,19 +326,24 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*`, `/account`, `
 
 ## 10. Git
 
-- Nhánh: `main` (bản demo ổn định) ← `develop` (tích hợp) ← `feature/<issue>-<mo-ta>`; ví dụ `feature/12-product-detail-page`.
+- Nhánh: chỉ có `main` (nhánh chính, Lead merge) ← nhánh của thành viên `<tên>/<issue>-<mo-ta>`, ví dụ `hao/16-menu-page` (đã tạo sẵn, xem docs/PHAN-CONG.md).
 - Commit theo Conventional Commits, phạm vi là module: `feat(cart): ...`, `fix(auth): ...`, `test(orders): ...`, `docs: ...`, `chore: ...`.
-- Một PR = một issue, mô tả có `Closes #<số>`, ≥ 1 người review. Không push thẳng vào `develop`/`main`.
-- Trước khi tạo PR: `git pull origin develop`, chạy `npm run lint && npm run build && npm test` ở thư mục mình sửa.
+- Một PR = một issue, base `main`, mô tả có `Closes #<số>`, Lead (@nguyxntanphat-cd) review và merge. Không push thẳng vào `main`.
+- **AI không được tự commit/push thay thành viên.** Mỗi người tự commit bằng tài khoản của mình (lịch sử commit là căn cứ chấm điểm).
+- Trước khi tạo PR: `git merge origin/main`, chạy `npm run lint && npm run build && npm test` ở thư mục mình sửa.
 
 ## 11. Definition of Done (từ đề bài)
 
 1. Code chạy được, không lỗi build, đạt tiêu chí chấp nhận của issue.
-2. Commit rõ ràng, PR được review và merge vào `develop`.
+2. Commit rõ ràng, PR được Lead review và merge vào `main`.
+5. Backend: đã kiểm thử API bằng Swagger/Postman, có ảnh minh chứng trong `report/figures/api/`.
 3. API có validate đầu vào; UI có loading/lỗi cơ bản.
 4. README / docs được cập nhật nếu có thay đổi cách chạy hoặc API.
 
 ## 12. Việc AI agent KHÔNG được làm
+
+- Viết code mà người dùng không hiểu: luôn giải thích ngắn gọn code vừa viết (props, state, luồng dữ liệu) để thành viên trả lời được khi thầy vấn đáp.
+- Chạy lệnh có thể xóa dữ liệu (`prisma migrate reset`, `DROP`, `rm -rf`, `git push --force`) khi chưa được hỏi.
 
 - Đổi công nghệ, đổi cấu trúc thư mục, đổi tên route/endpoint/field so với file này và `docs/API.md`.
 - Sửa `schema.prisma` mà không cập nhật mục 5.
