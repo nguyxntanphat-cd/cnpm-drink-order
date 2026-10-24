@@ -54,16 +54,16 @@ Scrum: issue #39 (Planning, Daily, burndown, Review, Retrospective).
 
 ## Theo thành viên
 
-| TV | Vai trò | Issue | Tổng SP |
-|---|---|---|---|
-| TV1 | Scrum Master · DevOps/Fullstack | #21 T6.2, #32 T9.4, #34 T1.4, #35 T9.5 (#11, #12 đã xong) | 13 |
-| TV2 | Product Owner · Backend | #14 T2.1, #15 T2.2, #20 T6.1, #29 T9.1 | 13 |
-| TV3 | Dev · Frontend | #16 T3.1, #19 T5.1, #30 T9.2 | 13 |
-| TV4 | Dev · Frontend (UI kit) | #13 T1.3, #17 T4.1, #31 T9.3 | 13 |
-| TV5 | Dev · Fullstack (Auth) | #22 T7.1, #23 T7.2, #24 T7.3 | 13 |
-| TV6 | Dev · Fullstack (Thanh toán) | #25 T8.1, #27 T8.2, #28 T8.3 | 13 |
-| TV7 | Dev · Backend (Task 10) | #18 T10.1, #26 T10.2, #33 T10.3 | 13 |
-| – | Mở rộng (ai xong sớm nhận) | #36 T10.4 Trang nhân viên | 3 |
+| TV | Thành viên | Vai trò | Issue | Tổng SP |
+|---|---|---|---|---|
+| TV1 | Cao Thanh Tuyền (@ThanhTuyencr30) | Scrum Master · DevOps/Fullstack | #21 T6.2, #32 T9.4, #34 T1.4, #35 T9.5 (#11, #12 đã xong) | 13 |
+| TV2 | Nguyễn Tấn Phát (@nguyxntanphat-cd) | Product Owner · Backend | #14 T2.1, #15 T2.2, #20 T6.1, #29 T9.1 | 13 |
+| TV3 | Lê Thế Hào (@SHI-HAO-1201) | Dev · Frontend | #16 T3.1, #19 T5.1, #30 T9.2 | 13 |
+| TV4 | Trần Điền Kha (@TDKha12) | Dev · Frontend (UI kit) | #13 T1.3, #17 T4.1, #31 T9.3 | 13 |
+| TV5 | Ngọc Thanh (@ngthanh309) | Dev · Fullstack (Auth) | #22 T7.1, #23 T7.2, #24 T7.3 | 13 |
+| TV6 | Trần Vy (@tranvyw5-source) | Dev · Fullstack (Thanh toán) | #25 T8.1, #27 T8.2, #28 T8.3 | 13 |
+| TV7 | Nghiêm Hân (@nghiemhn-hue) | Dev · Backend (Task 10) | #18 T10.1, #26 T10.2, #33 T10.3 | 13 |
+| – | – | Mở rộng (ai xong sớm nhận) | #36 T10.4 Trang nhân viên | 3 |
 
 Việc không phải code: TV1 tổ chức Daily/Review/Retro, cập nhật burndown; TV2 viết user story, ưu tiên backlog, nghiệm thu; TV3 viết kịch bản nghiệp vụ ([SCENARIOS.md](SCENARIOS.md)).
 
