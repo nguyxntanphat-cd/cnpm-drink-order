@@ -167,14 +167,27 @@ Việc có thể bắt đầu **ngay bây giờ** (Sprint 1):
 | TV6 | #25 API thanh toán | Viết `MockPaymentGateway` + thiết kế trước, tích hợp ở Sprint 2 |
 | TV1 | #34 Swagger + bộ lọc lỗi, #37 Scrum Sprint 1 | Làm sớm – Swagger giúp cả nhóm thử API; tạo `docs/scrum/sprint-1.md` |
 
-### Bước 5 – Tạo nhánh riêng cho issue
+### Bước 5 – Chuyển sang nhánh của issue
 
-**Luôn** tạo nhánh mới từ `develop` mới nhất, đặt tên theo số issue:
+Mỗi issue **đã có sẵn nhánh riêng** tên `feature/<số issue>-<tên>` – tên nhánh ghi ở đầu mô tả issue (dòng **Nhánh:**).
+Ví dụ Hào làm issue #16:
 ```bash
-git checkout develop
-git pull origin develop
-git checkout -b feature/16-menu-page        # 16 = số issue
+git fetch origin
+git checkout feature/16-menu-page
+git merge origin/develop          # lấy code mới nhất của cả nhóm trước khi code
 ```
+
+| Người | Nhánh của bạn (theo thứ tự nên làm) |
+|---|---|
+| TV1 Tuyền | `feature/34-swagger` → `feature/21-checkout-page` → `feature/35-account-page` → `feature/32-docker-handover` |
+| TV2 Phát | `feature/14-prisma-schema-seed` → `feature/15-products-api` → `feature/20-create-order-api` → `feature/29-order-history-api` |
+| TV3 Hào | `feature/16-menu-page` → `feature/19-cart` → `feature/30-order-history-page` |
+| TV4 Kha | `feature/13-ui-kit` → `feature/17-product-detail-page` → `feature/31-order-detail-page` |
+| TV5 Thanh | `feature/22-auth-api` → `feature/23-auth-pages` → `feature/24-auth-guard` |
+| TV6 Vy | `feature/25-payments-api` → `feature/27-payment-page` → `feature/28-cancel-order` |
+| TV7 Hân | `feature/18-order-state-machine` → `feature/26-inventory-locking` → `feature/33-promotions-loyalty` |
+
+Việc tùy chọn: `feature/36-staff-orders-page`. Không code thẳng trên `develop` / `main`.
 
 ### Bước 6 – Code (có thể nhờ AI)
 
@@ -215,9 +228,9 @@ Bị yêu cầu sửa → sửa trên chính nhánh đó, `git commit` + `git pu
 ### Bước 9 – Làm issue tiếp theo
 
 ```bash
-git checkout develop
-git pull origin develop      # lấy code mới nhất của cả nhóm
-git checkout -b feature/<số-issue>-<ten-ngan>
+git fetch origin
+git checkout feature/<nhánh-issue-tiếp-theo>
+git merge origin/develop     # bắt buộc: lấy code mới nhất (gồm phần bạn vừa merge)
 ```
 Quay lại **Bước 6**.
 
