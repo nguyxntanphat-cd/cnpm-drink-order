@@ -326,7 +326,7 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*`, `/account`, `
 
 ## 10. Git
 
-- Nhánh: chỉ có `main` (nhánh chính, Lead merge) ← nhánh của thành viên `<tên>/<issue>-<mo-ta>`, ví dụ `hao/16-menu-page` (đã tạo sẵn, xem docs/PHAN-CONG.md).
+- Nhánh: `main` (nhánh chính, Lead merge) ← mỗi thành viên **1 nhánh** `tv1-tuyen` … `tv7-han`, dùng cho mọi việc. Mỗi PR chỉ chứa 1 việc; Lead merge bằng merge commit, không xóa nhánh.
 - Commit theo Conventional Commits, phạm vi là module: `feat(cart): ...`, `fix(auth): ...`, `test(orders): ...`, `docs: ...`, `chore: ...`.
 - Một PR = một issue, base `main`, mô tả có `Closes #<số>`, Lead (@nguyxntanphat-cd) review và merge. Không push thẳng vào `main`.
 - **AI không được tự commit/push thay thành viên.** Mỗi người tự commit bằng tài khoản của mình (lịch sử commit là căn cứ chấm điểm).
