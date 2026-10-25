@@ -16,6 +16,7 @@ Nhóm 7 thành viên, làm theo **Agile Scrum** trong 3 Sprint. Thương hiệu 
 | [docs/SCENARIOS.md](docs/SCENARIOS.md) | Kịch bản nghiệp vụ, ngoại lệ, use case |
 | [docs/API.md](docs/API.md) | Hợp đồng API giữa frontend và backend |
 | [docs/DESIGN.md](docs/DESIGN.md) + [docs/ui/](docs/ui/) | Thiết kế giao diện, design token |
+| [docs/requirements/](docs/requirements/) · [docs/diagrams/](docs/diagrams/) · [docs/architecture/](docs/architecture/) | **Tài liệu & sơ đồ Assignment 2** – mỗi thư mục có README ghi rõ file nào, ai làm |
 | [docs/PHAN-CONG.md](docs/PHAN-CONG.md) | **Bảng phân công**: task / sub-task / người làm / nhánh |
 | [docs/BACKLOG.md](docs/BACKLOG.md) | Product Backlog, story point, thứ tự phụ thuộc |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Quy trình Git / Pull Request / Scrum |
