@@ -14,20 +14,20 @@
 
 | Nhánh | Ai | Mục đích |
 |---|---|---|
-| `main` | Lead (Phát) merge | Nhánh chính. **Không ai push thẳng** – chỉ nhận code qua Pull Request |
-| `<tên>/<số issue>-<mô tả>` | Thành viên | Mỗi issue một nhánh, **đã tạo sẵn**, tên bắt đầu bằng tên bạn: `tuyen/`, `phat/`, `hao/`, `kha/`, `thanh/`, `vy/`, `han/` |
-
-Tên nhánh của từng issue ghi ở dòng **Nhánh:** đầu mô tả issue. Danh sách đầy đủ: [docs/PHAN-CONG.md](docs/PHAN-CONG.md).
+| `main` | Lead (Phát) merge | Nhánh chính. **Không ai push thẳng** – chỉ nhận thay đổi qua Pull Request |
+| `tv1-tuyen`, `tv2-phat`, `tv3-hao`, `tv4-kha`, `tv5-thanh`, `tv6-vy`, `tv7-han` | Mỗi thành viên 1 nhánh | Dùng cho **mọi việc** của bạn: code, sơ đồ, tài liệu. Dùng suốt dự án, **không xóa** |
 
 ```bash
 git fetch origin
-git checkout hao/16-menu-page
-git merge origin/main            # luôn lấy code mới nhất trước khi code
-# ... code ...
+git checkout tv3-hao
+git merge origin/main            # luôn đồng bộ với main trước khi làm
+# ... code / vẽ sơ đồ ...
 git add .
 git commit -m "feat(products): trang menu hiển thị lưới sản phẩm"
 git push
 ```
+
+**Vòng làm việc:** làm 1 việc → commit → push → tạo PR → Lead merge → `git merge origin/main` → làm việc tiếp theo trên cùng nhánh.
 
 ## 2. Commit (Conventional Commits)
 
@@ -39,12 +39,12 @@ Scope là module: `auth`, `products`, `cart`, `orders`, `payments`, `inventory`,
 
 ## 3. Pull Request
 
-- **base: `main`** ← compare: nhánh của bạn. Một PR = một issue, mô tả ghi `Closes #<số>`.
+- **base: `main`** ← compare: nhánh của bạn. **Một PR = một việc** (1 issue hoặc 1 sơ đồ/tài liệu); với issue thì ghi `Closes #<số>`.
 - Trước khi tạo PR: `git merge origin/main`, chạy `npm run lint && npm run build && npm test` trong thư mục bạn sửa.
 - Chọn **Reviewer: Lead – @nguyxntanphat-cd** (+ 1 bạn làm phần liên quan nếu cần).
 - CI phải xanh ✅. Đổi giao diện → dán ảnh chụp màn hình; API → dán ảnh Swagger/Postman.
-- **Lead review và merge** bằng **Create a merge commit** (giữ nguyên các commit của bạn trên `main` làm minh chứng).
-  Sau đó có thể xóa nhánh.
+- **Lead review và merge** bằng **Create a merge commit** – **không dùng Squash/Rebase** (nhánh dùng lại nhiều lần, squash sẽ gây conflict; merge commit giữ nguyên commit của bạn làm minh chứng).
+- **Không xóa nhánh** sau khi merge. Đồng bộ lại: `git fetch origin && git merge origin/main && git push`.
 
 ## 4. Gặp conflict
 

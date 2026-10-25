@@ -176,27 +176,26 @@ Việc có thể bắt đầu **ngay bây giờ** (Sprint 1):
 | TV6 | #25 API thanh toán | Viết `MockPaymentGateway` + thiết kế trước, tích hợp ở Sprint 2 |
 | TV1 | #34 Swagger + bộ lọc lỗi | Làm sớm – Swagger giúp cả nhóm thử API |
 
-### Bước 5 – Chuyển sang nhánh của issue
+### Bước 5 – Chuyển sang nhánh của bạn
 
-Lead đã **chia sẵn nhánh cho từng người**, mỗi issue một nhánh, tên bắt đầu bằng tên bạn. Tên nhánh ghi ở dòng **Nhánh:** đầu mô tả issue.
-Ví dụ Hào làm issue #16:
+Mỗi người có **đúng 1 nhánh riêng**, dùng cho **mọi việc** (code, sơ đồ, tài liệu):
+
+| Người | Nhánh | Việc (theo thứ tự nên làm) |
+|---|---|---|
+| TV1 Cao Thanh Tuyền | `tv1-tuyen` | #34 → #21 → #35 → #32 |
+| TV2 Nguyễn Tấn Phát | `tv2-phat` | #14 → #15 → #20 → #29 |
+| TV3 Lê Thế Hào | `tv3-hao` | #16 → #19 → #30 |
+| TV4 Trần Điền Kha | `tv4-kha` | #13 → #17 → #31 |
+| TV5 Ngọc Thanh | `tv5-thanh` | #22 → #23 → #24 |
+| TV6 Trần Vy | `tv6-vy` | #25 → #27 → #28 |
+| TV7 Nghiêm Hân | `tv7-han` | #18 → #26 → #33 |
+
 ```bash
 git fetch origin
-git checkout hao/16-menu-page
-git merge origin/main             # lấy code mới nhất của cả nhóm trước khi code
+git checkout tv3-hao
+git merge origin/main             # lấy code mới nhất của cả nhóm trước khi làm
 ```
-
-| Người | Nhánh (theo thứ tự nên làm) |
-|---|---|
-| TV1 Tuyền | `tuyen/34-swagger` → `tuyen/21-checkout-page` → `tuyen/35-account-page` → `tuyen/32-docker-handover` |
-| TV2 Phát | `phat/14-prisma-schema-seed` → `phat/15-products-api` → `phat/20-create-order-api` → `phat/29-order-history-api` |
-| TV3 Hào | `hao/16-menu-page` → `hao/19-cart` → `hao/30-order-history-page` |
-| TV4 Kha | `kha/13-ui-kit` → `kha/17-product-detail-page` → `kha/31-order-detail-page` |
-| TV5 Thanh | `thanh/22-auth-api` → `thanh/23-auth-pages` → `thanh/24-auth-guard` |
-| TV6 Vy | `vy/25-payments-api` → `vy/27-payment-page` → `vy/28-cancel-order` |
-| TV7 Hân | `han/18-order-state-machine` → `han/26-inventory-locking` → `han/33-promotions-loyalty` |
-
-Việc tùy chọn: `optional/36-staff-orders-page`. **Không code thẳng trên `main`.**
+**Không làm thẳng trên `main`.** Việc tùy chọn #36: ai nhận thì làm trên nhánh của mình.
 
 ### Bước 6 – Code (có thể nhờ AI)
 
@@ -220,7 +219,7 @@ Tất cả không lỗi thì commit (commit nhỏ, nhiều lần cũng được)
 ```bash
 git add .
 git commit -m "feat(products): trang menu hiển thị lưới sản phẩm"
-git push -u origin hao/16-menu-page
+git push -u origin tv3-hao      # lần đầu; các lần sau chỉ cần git push
 ```
 Mẫu message: `feat(...)` thêm tính năng · `fix(...)` sửa lỗi · `test(...)` thêm test · `docs: ...` tài liệu.
 
@@ -230,16 +229,21 @@ Mẫu message: `feat(...)` thêm tính năng · `fix(...)` sửa lỗi · `test(
 2. Kiểm tra **base: `main`** ← **compare: nhánh của bạn**.
 3. Điền mẫu có sẵn, dòng đầu ghi `Closes #16` để issue tự đóng khi merge. Đổi giao diện thì dán ảnh chụp màn hình.
 4. Bên phải chọn **Reviewers: @nguyxntanphat-cd** (Lead).
-5. Đợi **CI xanh ✅** → Lead review và merge vào `main` (giữ nguyên các commit của bạn làm minh chứng).
+5. Đợi **CI xanh ✅** → Lead review và merge vào `main` bằng **Create a merge commit** (giữ nguyên các commit của bạn làm minh chứng).
+6. **Không bấm "Delete branch"** sau khi merge – nhánh `tvX-tên` dùng suốt dự án.
+
+Mỗi PR chỉ chứa **1 việc** (1 issue hoặc 1 sơ đồ/tài liệu). Xong việc nào tạo PR việc đó, không dồn đến cuối kỳ.
 
 Bị yêu cầu sửa → sửa trên chính nhánh đó, `git commit` + `git push` lại, PR tự cập nhật.
 
-### Bước 9 – Làm issue tiếp theo
+### Bước 9 – Làm việc tiếp theo (vẫn trên nhánh của bạn)
 
+Sau khi PR trước được merge:
 ```bash
+git checkout tv3-hao
 git fetch origin
-git checkout <tên>/<nhánh-issue-tiếp-theo>
-git merge origin/main        # bắt buộc: lấy code mới nhất (gồm phần bạn vừa merge)
+git merge origin/main        # bắt buộc: đồng bộ nhánh với main (gồm phần bạn vừa merge)
+git push
 ```
 Quay lại **Bước 6**.
 
