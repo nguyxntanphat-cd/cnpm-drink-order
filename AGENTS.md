@@ -41,44 +41,45 @@ hợp đồng API: [`docs/API.md`](docs/API.md), giao diện: [`docs/DESIGN.md`]
 .
 ├── AGENTS.md              ← file này
 ├── README.md
-├── docker-compose.yml     ← db (dev); thêm api + web ở issue #32
+├── docker-compose.yml     ← db (dev); thêm backend + frontend ở issue #32
 ├── .env.example           ← biến cho docker-compose; mỗi app có `.env.example` riêng
-├── apps/
-│   ├── api/               ← NestJS (backend)
-│   │   ├── prisma/
-│   │   │   ├── schema.prisma
-│   │   │   ├── migrations/
-│   │   │   └── seed.ts
-│   │   ├── src/
-│   │   │   ├── main.ts
-│   │   │   ├── app.module.ts
-│   │   │   ├── prisma/           (PrismaModule, PrismaService)
-│   │   │   ├── common/           (guards, decorators, filters, pipes, utils)
-│   │   │   └── modules/
-│   │   │       ├── auth/         (TV5)
-│   │   │       ├── users/        (TV5)
-│   │   │       ├── products/     (TV2)
-│   │   │       ├── orders/       (TV2 tạo/đọc đơn; TV7 state machine)
-│   │   │       ├── inventory/    (TV7)
-│   │   │       ├── payments/     (TV6)
-│   │   │       ├── promotions/   (TV7)
-│   │   │       └── health/       (TV1)
-│   │   └── test/                 (e2e của API)
-│   └── web/               ← Next.js (frontend)
-│       └── src/
-│           ├── app/              (routes – xem mục 7)
-│           ├── components/
-│           │   ├── ui/           (Button, Card, Input, Modal, Badge, QuantityStepper… – TV4)
-│           │   └── layout/       (AppShell, Header – TV4)
-│           ├── features/         (products/ cart/ auth/ orders/ payments/)
-│           ├── lib/              (api-client.ts, format.ts, query-client.ts)
-│           ├── stores/           (cart.store.ts, auth.store.ts)
-│           └── types/            (kiểu dữ liệu dùng chung – khớp docs/API.md)
+├── backend/               ← NestJS (API)
+│   ├── prisma/
+│   │   ├── schema.prisma
+│   │   ├── migrations/
+│   │   └── seed.ts
+│   ├── src/
+│   │   ├── main.ts
+│   │   ├── app.module.ts
+│   │   ├── prisma/               (PrismaModule, PrismaService)
+│   │   ├── common/               (guards, decorators, filters, pipes, utils)
+│   │   └── modules/
+│   │       ├── auth/             (TV5)
+│   │       ├── users/            (TV5)
+│   │       ├── products/         (TV2)
+│   │       ├── orders/           (TV2 tạo/đọc đơn; TV7 state machine)
+│   │       ├── inventory/        (TV7)
+│   │       ├── payments/         (TV6)
+│   │       ├── promotions/       (TV7)
+│   │       └── health/           (TV1)
+│   └── test/                     (e2e của API)
+├── frontend/              ← Next.js (web)
+│   └── src/
+│       ├── app/                  (routes – xem mục 7)
+│       ├── components/
+│       │   ├── ui/               (Button, Card, Input, Modal, Badge, QuantityStepper… – TV4)
+│       │   └── layout/           (AppShell, Header – TV4)
+│       ├── features/             (products/ cart/ auth/ orders/ payments/)
+│       ├── lib/                  (api-client.ts, format.ts, query-client.ts)
+│       ├── stores/               (cart.store.ts, auth.store.ts)
+│       └── types/                (kiểu dữ liệu dùng chung – khớp docs/API.md)
 ├── tests/
 │   └── e2e/               ← Playwright: luồng menu → xác nhận đơn (issue #51)
 ├── docs/                  ← requirements/, diagrams/, architecture/, scrum/, minh-chung/
 └── .github/workflows/     ← CI (ci.yml), CD (cd.yml – issue #50)
 ```
+
+> **Tên thư mục:** `frontend/` và `backend/` theo Assignment 1 (Task 1). Assignment 2 (mục 9) ghi `apps/web`, `apps/api` – nhóm chọn theo Assignment 1; nếu thầy yêu cầu khác thì đổi tên bằng 1 PR (chỉ cần sửa `ci.yml`, tài liệu và đường dẫn trong issue).
 
 Mỗi module NestJS: `xxx.module.ts`, `xxx.controller.ts`, `xxx.service.ts`, `dto/`, `xxx.service.spec.ts`. Tạo nhanh: `npx nest g resource modules/xxx --no-spec` rồi tự viết spec.
 Mỗi feature frontend: `components/`, `hooks/` (useXxx gọi TanStack Query), `api.ts` (hàm gọi API).
@@ -88,7 +89,7 @@ Mỗi feature frontend: `components/`, `hooks/` (useXxx gọi TanStack Query), `
 - TypeScript `strict`. Không dùng `any` (dùng `unknown` + thu hẹp kiểu).
 - Prettier (cấu hình sẵn trong từng app): `singleQuote: true`, `semi: true`, `printWidth: 100`. Chạy `npm run format` trước khi commit.
 - **Backend là ES modules**: import file nội bộ phải có đuôi `.js` (`import { X } from './x.service.js'`), test dùng `vi.fn()` thay cho `jest.fn()`.
-- **Next.js 16** khác nhiều so với bản cũ (vd `middleware` đổi thành `proxy`, Cache Components bật sẵn). AI phải đọc tài liệu trong `apps/web/node_modules/next/dist/docs/` khi không chắc.
+- **Next.js 16** khác nhiều so với bản cũ (vd `middleware` đổi thành `proxy`, Cache Components bật sẵn). AI phải đọc tài liệu trong `frontend/node_modules/next/dist/docs/` khi không chắc.
 - Đặt tên: file `kebab-case.ts`, component React `PascalCase.tsx`, biến/hàm `camelCase`,
   hằng số `UPPER_SNAKE_CASE`, enum `PascalCase` với giá trị `UPPER_SNAKE_CASE`.
 - **Code, tên biến, comment code: tiếng Anh. Text hiển thị cho người dùng: tiếng Việt có dấu.**
@@ -376,7 +377,7 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*`, `/account`, `
 - Backend: `npm test` (unit, Vitest) và `npm run test:e2e`. Bắt buộc có test cho Task 10:
   (a) chặn chuyển trạng thái sai, (b) 2 lần cùng `Idempotency-Key` chỉ tạo 1 payment, (c) đặt đồng thời không vượt tồn kho.
 - Viết test cho service mình làm khi có logic tính toán (giá, khuyến mãi…).
-- CI (GitHub Actions) chạy **Install → Lint → Unit Test → Build** cho cả `apps/api` và `apps/web` trên mỗi PR – PR đỏ không được merge.
+- CI (GitHub Actions) chạy **Install → Lint → Unit Test → Build** cho cả `backend` và `frontend` trên mỗi PR – PR đỏ không được merge.
 
 ## 10. Git
 
