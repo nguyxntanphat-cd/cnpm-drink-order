@@ -1,6 +1,6 @@
 # Product Backlog & phân công
 
-Đề có 10 task (mỗi task 1 điểm). Mỗi task được chia thành các issue con trên GitHub để **7 người code khối lượng ngang nhau (13 story point/người)**.
+Đề có 10 task (mỗi task 1 điểm). Mỗi task được chia thành các issue con trên GitHub để **7 người code khối lượng ngang nhau (13–16 story point/người)**.
 Bảng phân công đích danh (gồm nhánh): [PHAN-CONG.md](PHAN-CONG.md). Nguồn sự thật là GitHub Issues + [Milestones](https://github.com/nguyxntanphat-cd/cnpm-drink-order/milestones) – file này chỉ là bảng tổng hợp.
 
 ## Theo Sprint
@@ -43,19 +43,22 @@ Bảng phân công đích danh (gồm nhánh): [PHAN-CONG.md](PHAN-CONG.md). Ngu
 | #31 | T9.3 | Trang chi tiết đơn /orders/[id] + timeline trạng thái + màn xác nhận | TV4 | 5 | #9 Xác nhận, lịch sử & bàn giao |
 | #32 | T9.4 | docker-compose chạy cả 3 dịch vụ + README bàn giao + kịch bản demo | TV1 | 3 | #9 Xác nhận, lịch sử & bàn giao |
 | #33 | T10.3 | Khuyến mãi + điểm thưởng: POST /promotions/validate, applyPromotion, cộng điểm | TV7 | 3 | #10 Nghiệp vụ backend |
-| #35 | T9.5 | Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | TV1 | 3 | #9 Xác nhận, lịch sử & bàn giao |
+| #35 | T9.5 | Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | TV5 | 3 | #9 Xác nhận, lịch sử & bàn giao |
+| #50 | T9.6 | Pipeline CD + deploy production, smoke test, rollback | TV1 | 5 | #9 Xác nhận, lịch sử & bàn giao |
+| #51 | T9.7 | E2E test luồng menu → xác nhận đơn | TV6 | 3 | #9 Xác nhận, lịch sử & bàn giao |
+| #52 | T3.2 | PWA: manifest, icon, cài lên điện thoại | TV4 | 3 | #3 Trang Menu |
 | #36 | T10.4 | (Mở rộng) Trang nhân viên /staff/orders cập nhật trạng thái pha chế | - | 3 | #10 Nghiệp vụ backend |
 
 ## Theo thành viên
 
 | TV | Thành viên | Vai trò | Issue | Tổng SP |
 |---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền (@ThanhTuyencr30) | Scrum Master · DevOps/Fullstack | #21 T6.2, #32 T9.4, #34 T1.4, #35 T9.5 | 13 |
+| TV1 | Cao Thanh Tuyền (@ThanhTuyencr30) | Scrum Master · DevOps/Fullstack | #34 T1.4, #21 T6.2, #32 T9.4, #50 T9.6 | 16 |
 | TV2 | Nguyễn Tấn Phát (@nguyxntanphat-cd) | Product Owner · Backend | #14 T2.1, #15 T2.2, #20 T6.1, #29 T9.1 | 13 |
 | TV3 | Lê Thế Hào (@SHI-HAO-1201) | Dev · Frontend | #16 T3.1, #19 T5.1, #30 T9.2 | 13 |
-| TV4 | Trần Điền Kha (@TDKha12) | Dev · Frontend (UI kit) | #13 T1.3, #17 T4.1, #31 T9.3 | 13 |
-| TV5 | Ngọc Thanh (@ngthanh309) | Dev · Fullstack (Auth) | #22 T7.1, #23 T7.2, #24 T7.3 | 13 |
-| TV6 | Trần Vy (@tranvyw5-source) | Dev · Fullstack (Thanh toán) | #25 T8.1, #27 T8.2, #28 T8.3 | 13 |
+| TV4 | Trần Điền Kha (@TDKha12) | Dev · Frontend (UI kit) | #13 T1.3, #17 T4.1, #52 T3.2, #31 T9.3 | 16 |
+| TV5 | Ngọc Thanh (@ngthanh309) | Dev · Fullstack (Auth) | #22 T7.1, #23 T7.2, #24 T7.3, #35 T9.5 | 16 |
+| TV6 | Trần Vy (@tranvyw5-source) | Dev · Fullstack (Thanh toán) | #25 T8.1, #27 T8.2, #28 T8.3, #51 T9.7 | 16 |
 | TV7 | Nghiêm Hân (@nghiemhn-hue) | Dev · Backend (Task 10) | #18 T10.1, #26 T10.2, #33 T10.3 | 13 |
 | – | – | Mở rộng (ai xong sớm nhận) | #36 T10.4 Trang nhân viên | 3 |
 

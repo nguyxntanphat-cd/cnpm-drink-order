@@ -80,12 +80,12 @@ Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose u
 
 | TV | Họ tên | GitHub | Vai trò Scrum | Phụ trách chính |
 |---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao |
+| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger + `/health`, trang Checkout, Docker, pipeline CD + deploy production |
 | TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | **Lead** · Product Owner | Khung dự án + CI, Prisma schema + seed, API sản phẩm, API đơn hàng |
 | TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn |
-| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn |
-| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend) |
-| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn |
+| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, PWA, Chi tiết đơn |
+| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend), trang Tài khoản |
+| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn, E2E test |
 | TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng |
 
 Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order/issues) → lọc **Assignee** là bạn. Chi tiết từng issue: [docs/BACKLOG.md](docs/BACKLOG.md).
@@ -183,12 +183,12 @@ Mỗi người có **đúng 1 nhánh riêng**, dùng cho **mọi việc** (code,
 
 | Người | Nhánh | Việc (theo thứ tự nên làm) |
 |---|---|---|
-| TV1 Cao Thanh Tuyền | `tv1-tuyen` | #34 → #21 → #35 → #32 |
+| TV1 Cao Thanh Tuyền | `tv1-tuyen` | #34 → #21 → #32 → #50 |
 | TV2 Nguyễn Tấn Phát | `tv2-phat` | #14 → #15 → #20 → #29 |
 | TV3 Lê Thế Hào | `tv3-hao` | #16 → #19 → #30 |
-| TV4 Trần Điền Kha | `tv4-kha` | #13 → #17 → #31 |
-| TV5 Ngọc Thanh | `tv5-thanh` | #22 → #23 → #24 |
-| TV6 Trần Vy | `tv6-vy` | #25 → #27 → #28 |
+| TV4 Trần Điền Kha | `tv4-kha` | #13 → #17 → #52 → #31 |
+| TV5 Ngọc Thanh | `tv5-thanh` | #22 → #23 → #24 → #35 |
+| TV6 Trần Vy | `tv6-vy` | #25 → #27 → #28 → #51 |
 | TV7 Nghiêm Hân | `tv7-han` | #18 → #26 → #33 |
 
 ```bash
