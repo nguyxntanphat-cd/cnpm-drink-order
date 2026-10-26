@@ -61,7 +61,7 @@ Bắt buộc có test chứng minh: **(a)** chặn chuyển trạng thái sai; *
 - API có validate đầu vào; UI xử lý loading/lỗi cơ bản.
 - Có hướng dẫn chạy trong README.
 
-## Bàn giao (cuối Sprint 3)
+## Bàn giao (cuối Sprint 2)
 1. Demo end-to-end: chọn sản phẩm → giỏ hàng → thanh toán → xác nhận đơn.
 2. Bàn giao mã nguồn (Git), docker-compose chạy được, README.
 3. Trình bày Sprint Retrospective.

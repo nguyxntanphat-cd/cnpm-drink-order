@@ -41,39 +41,43 @@ hợp đồng API: [`docs/API.md`](docs/API.md), giao diện: [`docs/DESIGN.md`]
 .
 ├── AGENTS.md              ← file này
 ├── README.md
-├── docker-compose.yml     ← db (dev); thêm backend + frontend ở Task 9
+├── docker-compose.yml     ← db (dev); thêm api + web ở issue #32
 ├── .env.example           ← biến cho docker-compose; mỗi app có `.env.example` riêng
-├── backend/               ← NestJS
-│   ├── prisma/
-│   │   ├── schema.prisma
-│   │   ├── migrations/
-│   │   └── seed.ts
-│   ├── src/
-│   │   ├── main.ts
-│   │   ├── app.module.ts
-│   │   ├── prisma/               (PrismaModule, PrismaService)
-│   │   ├── common/               (guards, decorators, filters, pipes, utils)
-│   │   └── modules/
-│   │       ├── auth/             (TV5)
-│   │       ├── users/            (TV5)
-│   │       ├── products/         (TV2)
-│   │       ├── orders/           (TV2 tạo/đọc đơn; TV7 state machine)
-│   │       ├── inventory/        (TV7)
-│   │       ├── payments/         (TV6)
-│   │       └── promotions/       (TV7)
-│   └── test/                     (e2e)
-├── frontend/              ← Next.js
-│   └── src/
-│       ├── app/                  (routes – xem mục 7)
-│       ├── components/
-│       │   ├── ui/               (Button, Card, Input, Modal, Badge, QuantityStepper… – TV4)
-│       │   └── layout/           (AppShell, Header – TV4)
-│       ├── features/             (code theo nghiệp vụ)
-│       │   ├── products/  cart/  auth/  orders/  payments/
-│       ├── lib/                  (api-client.ts, format.ts, query-client.ts)
-│       ├── stores/               (cart.store.ts, auth.store.ts)
-│       └── types/                (kiểu dữ liệu dùng chung – khớp docs/API.md)
-└── docs/
+├── apps/
+│   ├── api/               ← NestJS (backend)
+│   │   ├── prisma/
+│   │   │   ├── schema.prisma
+│   │   │   ├── migrations/
+│   │   │   └── seed.ts
+│   │   ├── src/
+│   │   │   ├── main.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── prisma/           (PrismaModule, PrismaService)
+│   │   │   ├── common/           (guards, decorators, filters, pipes, utils)
+│   │   │   └── modules/
+│   │   │       ├── auth/         (TV5)
+│   │   │       ├── users/        (TV5)
+│   │   │       ├── products/     (TV2)
+│   │   │       ├── orders/       (TV2 tạo/đọc đơn; TV7 state machine)
+│   │   │       ├── inventory/    (TV7)
+│   │   │       ├── payments/     (TV6)
+│   │   │       ├── promotions/   (TV7)
+│   │   │       └── health/       (TV1)
+│   │   └── test/                 (e2e của API)
+│   └── web/               ← Next.js (frontend)
+│       └── src/
+│           ├── app/              (routes – xem mục 7)
+│           ├── components/
+│           │   ├── ui/           (Button, Card, Input, Modal, Badge, QuantityStepper… – TV4)
+│           │   └── layout/       (AppShell, Header – TV4)
+│           ├── features/         (products/ cart/ auth/ orders/ payments/)
+│           ├── lib/              (api-client.ts, format.ts, query-client.ts)
+│           ├── stores/           (cart.store.ts, auth.store.ts)
+│           └── types/            (kiểu dữ liệu dùng chung – khớp docs/API.md)
+├── tests/
+│   └── e2e/               ← Playwright: luồng menu → xác nhận đơn (issue #51)
+├── docs/                  ← requirements/, diagrams/, architecture/, scrum/, minh-chung/
+└── .github/workflows/     ← CI (ci.yml), CD (cd.yml – issue #50)
 ```
 
 Mỗi module NestJS: `xxx.module.ts`, `xxx.controller.ts`, `xxx.service.ts`, `dto/`, `xxx.service.spec.ts`. Tạo nhanh: `npx nest g resource modules/xxx --no-spec` rồi tự viết spec.
@@ -84,7 +88,7 @@ Mỗi feature frontend: `components/`, `hooks/` (useXxx gọi TanStack Query), `
 - TypeScript `strict`. Không dùng `any` (dùng `unknown` + thu hẹp kiểu).
 - Prettier (cấu hình sẵn trong từng app): `singleQuote: true`, `semi: true`, `printWidth: 100`. Chạy `npm run format` trước khi commit.
 - **Backend là ES modules**: import file nội bộ phải có đuôi `.js` (`import { X } from './x.service.js'`), test dùng `vi.fn()` thay cho `jest.fn()`.
-- **Next.js 16** khác nhiều so với bản cũ (vd `middleware` đổi thành `proxy`, Cache Components bật sẵn). AI phải đọc tài liệu trong `frontend/node_modules/next/dist/docs/` khi không chắc.
+- **Next.js 16** khác nhiều so với bản cũ (vd `middleware` đổi thành `proxy`, Cache Components bật sẵn). AI phải đọc tài liệu trong `apps/web/node_modules/next/dist/docs/` khi không chắc.
 - Đặt tên: file `kebab-case.ts`, component React `PascalCase.tsx`, biến/hàm `camelCase`,
   hằng số `UPPER_SNAKE_CASE`, enum `PascalCase` với giá trị `UPPER_SNAKE_CASE`.
 - **Code, tên biến, comment code: tiếng Anh. Text hiển thị cho người dùng: tiếng Việt có dấu.**
@@ -98,13 +102,49 @@ Mỗi feature frontend: `components/`, `hooks/` (useXxx gọi TanStack Query), `
 Đây là schema chuẩn. TV2 tạo file `schema.prisma` theo đúng phần này ở Sprint 1; ai cần thêm trường → PR sửa cả schema và mục này.
 
 ```prisma
-enum Role          { CUSTOMER STAFF }
-enum Size          { S M L }
-enum IceLevel      { NONE LESS NORMAL MORE }
-enum OrderStatus   { PENDING PAYMENT_FAILED PAID PREPARING READY COMPLETED CANCELLED }
-enum PaymentMethod { QR_TRANSFER E_WALLET CARD }
-enum PaymentStatus { PROCESSING SUCCEEDED FAILED REFUNDED }
-enum DiscountType  { PERCENT FIXED }
+enum Role {
+  CUSTOMER
+  STAFF
+}
+enum Size {
+  S
+  M
+  L
+}
+enum IceLevel {
+  NONE
+  LESS
+  NORMAL
+  MORE
+}
+enum OrderStatus {
+  PENDING
+  PAYMENT_FAILED
+  PAID
+  PREPARING
+  READY
+  COMPLETED
+  CANCELLED
+}
+enum PaymentMethod {
+  QR_TRANSFER
+  E_WALLET
+  CARD
+}
+enum PaymentStatus {
+  PROCESSING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+enum DiscountType {
+  PERCENT
+  FIXED
+}
+enum LoyaltyType {
+  EARN
+  REVERT
+}
 
 model User {
   id            Int      @id @default(autoincrement())
@@ -116,6 +156,7 @@ model User {
   loyaltyPoints Int      @default(0)
   createdAt     DateTime @default(now())
   orders        Order[]
+  loyaltyTransactions LoyaltyTransaction[]
 }
 
 model Category {
@@ -174,6 +215,7 @@ model Order {
   items         OrderItem[]
   payments      Payment[]
   statusHistory OrderStatusHistory[]
+  loyaltyTransactions LoyaltyTransaction[]
 }
 
 model OrderItem {
@@ -228,6 +270,18 @@ model Promotion {
   isActive      Boolean      @default(true)
   expiresAt     DateTime?
 }
+
+// Lịch sử cộng / trừ điểm thưởng (Assignment 2 – class diagram bắt buộc có)
+model LoyaltyTransaction {
+  id        Int         @id @default(autoincrement())
+  userId    Int
+  user      User        @relation(fields: [userId], references: [id])
+  orderId   Int?
+  order     Order?      @relation(fields: [orderId], references: [id])
+  type      LoyaltyType // EARN khi đơn PAID, REVERT khi hủy đơn đã PAID
+  points    Int         // số dương với EARN, số âm với REVERT
+  createdAt DateTime    @default(now())
+}
 ```
 
 ## 6. Nghiệp vụ cốt lõi (backend)
@@ -265,7 +319,7 @@ Chuyển sai → ném `ConflictException` (409) với message `Invalid status tr
 
 ### 6.5 Khuyến mãi & điểm thưởng (Task 10 – TV7)
 - Mã giảm giá áp khi tạo đơn (`promoCode`), kiểm tra `isActive`, `expiresAt`, `minOrderTotal`.
-- Điểm thưởng: cộng `floor(total / 10000)` điểm khi đơn chuyển sang `PAID`.
+- Điểm thưởng: cộng `floor(total / 10000)` điểm khi đơn chuyển sang `PAID` – cập nhật `User.loyaltyPoints` **và** ghi 1 dòng `LoyaltyTransaction` (EARN) trong cùng transaction; hủy đơn đã PAID thì ghi REVERT (số âm) và trừ lại điểm.
 
 ## 7. Frontend
 
@@ -322,7 +376,7 @@ Route cần đăng nhập: `/checkout`, `/payment/*`, `/orders/*`, `/account`, `
 - Backend: `npm test` (unit, Vitest) và `npm run test:e2e`. Bắt buộc có test cho Task 10:
   (a) chặn chuyển trạng thái sai, (b) 2 lần cùng `Idempotency-Key` chỉ tạo 1 payment, (c) đặt đồng thời không vượt tồn kho.
 - Viết test cho service mình làm khi có logic tính toán (giá, khuyến mãi…).
-- CI (GitHub Actions) chạy lint + build + test cho cả `backend` và `frontend` trên mỗi PR – PR đỏ không được merge.
+- CI (GitHub Actions) chạy **Install → Lint → Unit Test → Build** cho cả `apps/api` và `apps/web` trên mỗi PR – PR đỏ không được merge.
 
 ## 10. Git
 

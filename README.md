@@ -1,7 +1,7 @@
 # BrewLite – Ứng dụng đặt cà phê không dùng tiền mặt
 
 Bài tập lớn môn **Công nghệ Phần mềm** – Trường ĐH Sài Gòn, HK I 2026–2027.
-Nhóm 7 thành viên, làm theo **Agile Scrum** trong 3 Sprint. Thương hiệu hiển thị trên giao diện: **COLDEN COFFEE**.
+Nhóm 7 thành viên, làm theo **Agile Scrum** trong **2 Sprint** (theo đề Assignment 2). Thương hiệu hiển thị trên giao diện: **COLDEN COFFEE**.
 
 > *“BrewLite giúp khách hàng đặt và thanh toán đồ uống không dùng tiền mặt chỉ trong vài chạm, giảm thời gian xếp hàng và nhận đơn nhanh tại quầy.”*
 
@@ -32,14 +32,15 @@ Nhóm 7 thành viên, làm theo **Agile Scrum** trong 3 Sprint. Thương hiệu 
 | DevOps | Docker Compose, GitHub Actions |
 
 ```
-frontend/  Next.js  :3000  ──REST/JSON──▶  backend/  NestJS  :3001  ──Prisma──▶  PostgreSQL :5432
+apps/web  Next.js  :3000  ──REST/JSON──▶  apps/api  NestJS  :3001  ──Prisma──▶  PostgreSQL :5432
 ```
 
 ## Cấu trúc thư mục
 
 ```
-backend/     NestJS API (cổng 3001)
-frontend/    Next.js web (cổng 3000)
+apps/api/    NestJS API – backend (cổng 3001)
+apps/web/    Next.js web – frontend (cổng 3000)
+tests/       E2E test (Playwright)
 docs/        Tài liệu, ảnh thiết kế, biên bản Scrum
 .github/     CI, mẫu issue / pull request
 AGENTS.md    Quy ước cho AI coding agent
@@ -55,7 +56,7 @@ cd cnpm-drink-order
 docker compose up -d db                       # PostgreSQL ở localhost:5432
 
 # Terminal 1 – backend: http://localhost:3001
-cd backend
+cd apps/api
 cp .env.example .env
 npm install
 npm run prisma:migrate
@@ -63,14 +64,14 @@ npm run seed
 npm run start:dev
 
 # Terminal 2 – frontend: http://localhost:3000
-cd frontend
+cd apps/web
 cp .env.example .env.local
 npm install
 npm run dev
 ```
 
 Mở http://localhost:3000 thấy **"Hello BrewLite"** là backend và frontend đã nối được với nhau.
-Chi tiết lệnh: [backend/README.md](backend/README.md), [frontend/README.md](frontend/README.md).
+Chi tiết lệnh: [apps/api/README.md](apps/api/README.md), [apps/web/README.md](apps/web/README.md).
 
 Tài khoản demo (sau khi làm xong issue #14 – seed): `demo@brewlite.vn / 123456` · nhân viên `staff@brewlite.vn / 123456` · mã giảm giá `WELCOME10`.
 
@@ -80,12 +81,12 @@ Chạy toàn bộ bằng Docker (hoàn thiện ở issue #32): `docker compose u
 
 | TV | Họ tên | GitHub | Vai trò Scrum | Phụ trách chính |
 |---|---|---|---|---|
-| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger, trang Checkout, trang Tài khoản, Docker & bàn giao |
+| TV1 | Cao Thanh Tuyền | [@ThanhTuyencr30](https://github.com/ThanhTuyencr30) | Scrum Master | Swagger + `/health`, trang Checkout, Docker, pipeline CD + deploy production |
 | TV2 | Nguyễn Tấn Phát | [@nguyxntanphat-cd](https://github.com/nguyxntanphat-cd) | **Lead** · Product Owner | Khung dự án + CI, Prisma schema + seed, API sản phẩm, API đơn hàng |
 | TV3 | Lê Thế Hào | [@SHI-HAO-1201](https://github.com/SHI-HAO-1201) | Dev | Trang Menu, Giỏ hàng, Lịch sử đơn |
-| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, Chi tiết đơn |
-| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend) |
-| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn |
+| TV4 | Trần Điền Kha | [@TDKha12](https://github.com/TDKha12) | Dev | UI kit, Chi tiết sản phẩm, PWA, Chi tiết đơn |
+| TV5 | Ngọc Thanh | [@ngthanh309](https://github.com/ngthanh309) | Dev | Đăng ký / Đăng nhập (backend + frontend), trang Tài khoản |
+| TV6 | Trần Vy | [@tranvyw5-source](https://github.com/tranvyw5-source) | Dev | Thanh toán (API idempotent + UI), Hủy đơn, E2E test |
 | TV7 | Nghiêm Hân | [@nghiemhn-hue](https://github.com/nghiemhn-hue) | Dev | State machine, tồn kho, khuyến mãi / điểm thưởng |
 
 Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order/issues) → lọc **Assignee** là bạn. Chi tiết từng issue: [docs/BACKLOG.md](docs/BACKLOG.md).
@@ -94,9 +95,8 @@ Việc của bạn: vào [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink
 
 | Sprint | Mục tiêu | Task |
 |---|---|---|
-| 1 | Nền tảng & hiển thị menu | Task 1, 2, 3, 4 (+ khung Task 10) |
-| 2 | Giỏ hàng, đặt đơn, đăng nhập | Task 5, 6, 7 (+ tồn kho, API thanh toán) |
-| 3 | Thanh toán, bàn giao & nghiệp vụ nâng cao | Task 8, 9, 10 |
+| 1 | Nền tảng, tài liệu Task 1–3, CI và MVP xem menu (Assignment 2 – Task 4) | Task 1, 2, 3, 4 (+ khởi động Task 10) |
+| 2 | Hoàn thiện MVP, CI/CD, deploy production và bàn giao (Assignment 2 – Task 5) | Task 5, 6, 7, 8, 9, 10 + CD, E2E, PWA |
 
 ---
 
@@ -143,7 +143,7 @@ git config --global user.email "email-github@cua-ban.com"
 ```bash
 docker compose up -d db                     # bật PostgreSQL
 
-cd backend
+cd apps/api
 cp .env.example .env
 npm install
 npm run prisma:migrate
@@ -151,7 +151,7 @@ npm run start:dev                           # để nguyên terminal này
 ```
 Mở terminal thứ hai:
 ```bash
-cd frontend
+cd apps/web
 cp .env.example .env.local
 npm install
 npm run dev
@@ -183,12 +183,12 @@ Mỗi người có **đúng 1 nhánh riêng**, dùng cho **mọi việc** (code,
 
 | Người | Nhánh | Việc (theo thứ tự nên làm) |
 |---|---|---|
-| TV1 Cao Thanh Tuyền | `tv1-tuyen` | #34 → #21 → #35 → #32 |
+| TV1 Cao Thanh Tuyền | `tv1-tuyen` | #34 → #21 → #32 → #50 |
 | TV2 Nguyễn Tấn Phát | `tv2-phat` | #14 → #15 → #20 → #29 |
 | TV3 Lê Thế Hào | `tv3-hao` | #16 → #19 → #30 |
-| TV4 Trần Điền Kha | `tv4-kha` | #13 → #17 → #31 |
-| TV5 Ngọc Thanh | `tv5-thanh` | #22 → #23 → #24 |
-| TV6 Trần Vy | `tv6-vy` | #25 → #27 → #28 |
+| TV4 Trần Điền Kha | `tv4-kha` | #13 → #17 → #52 → #31 |
+| TV5 Ngọc Thanh | `tv5-thanh` | #22 → #23 → #24 → #35 |
+| TV6 Trần Vy | `tv6-vy` | #25 → #27 → #28 → #51 |
 | TV7 Nghiêm Hân | `tv7-han` | #18 → #26 → #33 |
 
 ```bash
@@ -209,12 +209,12 @@ git merge origin/main             # lấy code mới nhất của cả nhóm tr�
 
 ### Bước 7 – Kiểm tra rồi commit
 
-Trong thư mục bạn sửa (`backend` hoặc `frontend`):
+Trong thư mục bạn sửa (`apps/api` hoặc `apps/web`):
 ```bash
 npm run format
 npm run lint
 npm run build
-npm test                 # backend
+npm test
 ```
 Tất cả không lỗi thì commit (commit nhỏ, nhiều lần cũng được):
 ```bash
@@ -254,9 +254,9 @@ Quay lại **Bước 6**.
 |---|---|
 | `npm error Cannot read properties of null (reading 'edgesOut')` | Đang dùng Node 22 / npm 10 → cài Node 24 |
 | `Can't reach database server at localhost:5432` | Mở Docker Desktop, chạy lại `docker compose up -d db` |
-| Trang báo "Không kết nối được backend" | Backend chưa chạy, hoặc thiếu file `frontend/.env.local` |
+| Trang báo "Không kết nối được backend" | Backend chưa chạy, hoặc thiếu file `apps/web/.env.local` |
 | `npm warn install-scripts ...` khi cài thư viện mới | Chạy `npm install-scripts approve <tên-thư-viện>` |
-| Sau khi `git pull` bị lỗi thiếu thư viện / bảng | Chạy lại `npm install` và `npm run prisma:migrate` trong `backend` |
+| Sau khi `git pull` bị lỗi thiếu thư viện / bảng | Chạy lại `npm install` và `npm run prisma:migrate` trong `apps/api` |
 | Pull Request bị **conflict** | `git fetch origin && git merge origin/main` trên nhánh của bạn, sửa chỗ conflict, commit + push lại |
 | CI đỏ ❌ | Bấm **Details** cạnh dấu ❌ xem bước nào lỗi, chạy lại lệnh đó ở máy, sửa rồi push |
 
