@@ -15,7 +15,7 @@
 
 ## Design tokens
 
-Đã khai báo sẵn trong `frontend/src/app/globals.css` bằng `@theme` (Tailwind v4). Bảng dưới là giá trị tương ứng; class dùng: `bg-background`, `bg-surface`, `bg-primary`, `bg-primary-dark`, `bg-primary-light`, `text-ink`, `text-ink-muted`, `border-line`, `text-success`, `bg-success-soft`, `text-danger`, `bg-danger-soft`, `bg-warning-soft`, `rounded-card`, `rounded-btn`.
+Đã khai báo sẵn trong `apps/web/src/app/globals.css` bằng `@theme` (Tailwind v4). Bảng dưới là giá trị tương ứng; class dùng: `bg-background`, `bg-surface`, `bg-primary`, `bg-primary-dark`, `bg-primary-light`, `text-ink`, `text-ink-muted`, `border-line`, `text-success`, `bg-success-soft`, `text-danger`, `bg-danger-soft`, `bg-warning-soft`, `rounded-card`, `rounded-btn`.
 
 ```ts
 colors: {

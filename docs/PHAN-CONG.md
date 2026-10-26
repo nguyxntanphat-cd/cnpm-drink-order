@@ -36,19 +36,19 @@ Xem trực tiếp: [Issues](https://github.com/nguyxntanphat-cd/cnpm-drink-order
 | Task 7 – Đăng ký / Đăng nhập (JWT) | #23 [T7.2] Trang Đăng nhập / Đăng ký / Quên mật khẩu + popup kết quả | Frontend | Ngọc Thanh | `tv5-thanh` | 2 |
 | Task 7 – Đăng ký / Đăng nhập (JWT) | #24 [T7.3] Auth store, gắn token vào api-client, route guard (EX-01) | Frontend | Ngọc Thanh | `tv5-thanh` | 2 |
 | Task 8 – Thanh toán không tiền mặt | #25 [T8.1] API POST /payments + Mock gateway + Idempotency-Key + test (b) | Backend | Trần Vy | `tv6-vy` | 2 |
-| Task 8 – Thanh toán không tiền mặt | #27 [T8.2] Trang thanh toán /payment/[orderId]: QR + 4 trạng thái | Frontend | Trần Vy | `tv6-vy` | 3 |
-| Task 8 – Thanh toán không tiền mặt | #28 [T8.3] Hủy đơn: POST /orders/:id/cancel + hoàn tiền mô phỏng + nút Hủy | Fullstack | Trần Vy | `tv6-vy` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #29 [T9.1] API GET /orders/me và GET /orders/:id | Backend | Nguyễn Tấn Phát | `tv2-phat` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #30 [T9.2] Trang Lịch sử đặt hàng /orders (tab Tất cả / Đang xử lý / Hoàn thành) | Frontend | Lê Thế Hào | `tv3-hao` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #31 [T9.3] Trang chi tiết đơn /orders/[id] + timeline trạng thái + màn xác nhận | Frontend | Trần Điền Kha | `tv4-kha` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #32 [T9.4] docker-compose chạy cả 3 dịch vụ + README bàn giao + kịch bản demo | DevOps | Cao Thanh Tuyền | `tv1-tuyen` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #35 [T9.5] Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | Frontend | Ngọc Thanh | `tv5-thanh` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #50 [T9.6] Pipeline CD + deploy production (Docker, GHCR, Render), smoke test, rollback | DevOps | Cao Thanh Tuyền | `tv1-tuyen` | 3 |
-| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #51 [T9.7] E2E test luồng menu → xác nhận đơn (Playwright) | Test | Trần Vy | `tv6-vy` | 3 |
+| Task 8 – Thanh toán không tiền mặt | #27 [T8.2] Trang thanh toán /payment/[orderId]: QR + 4 trạng thái | Frontend | Trần Vy | `tv6-vy` | 2 |
+| Task 8 – Thanh toán không tiền mặt | #28 [T8.3] Hủy đơn: POST /orders/:id/cancel + hoàn tiền mô phỏng + nút Hủy | Fullstack | Trần Vy | `tv6-vy` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #29 [T9.1] API GET /orders/me và GET /orders/:id | Backend | Nguyễn Tấn Phát | `tv2-phat` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #30 [T9.2] Trang Lịch sử đặt hàng /orders (tab Tất cả / Đang xử lý / Hoàn thành) | Frontend | Lê Thế Hào | `tv3-hao` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #31 [T9.3] Trang chi tiết đơn /orders/[id] + timeline trạng thái + màn xác nhận | Frontend | Trần Điền Kha | `tv4-kha` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #32 [T9.4] docker-compose chạy cả 3 dịch vụ + README bàn giao + kịch bản demo | DevOps | Cao Thanh Tuyền | `tv1-tuyen` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #35 [T9.5] Trang tài khoản /account: thông tin, điểm thưởng, đăng xuất | Frontend | Ngọc Thanh | `tv5-thanh` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #50 [T9.6] Pipeline CD + deploy production (Docker, GHCR, Render), smoke test, rollback | DevOps | Cao Thanh Tuyền | `tv1-tuyen` | 2 |
+| Task 9 – Xác nhận, lịch sử đơn & bàn giao | #51 [T9.7] E2E test luồng menu → xác nhận đơn (Playwright) | Test | Trần Vy | `tv6-vy` | 2 |
 | Task 10 – Nghiệp vụ backend | #18 [T10.1] Order State Machine + lịch sử trạng thái + PATCH /orders/:id/status + test (a) | Backend | Nghiêm Hân | `tv7-han` | 1 |
 | Task 10 – Nghiệp vụ backend | #26 [T10.2] Kiểm soát tồn kho: transaction + optimistic locking + test (c) | Backend | Nghiêm Hân | `tv7-han` | 2 |
-| Task 10 – Nghiệp vụ backend | #33 [T10.3] Khuyến mãi + điểm thưởng: POST /promotions/validate, applyPromotion, cộng điểm | Backend | Nghiêm Hân | `tv7-han` | 3 |
-| Task 10 – Nghiệp vụ backend | #36 [T10.4] (Mở rộng) Trang nhân viên cập nhật trạng thái | Frontend | Ai xong sớm nhận | nhánh của người nhận | 3 |
+| Task 10 – Nghiệp vụ backend | #33 [T10.3] Khuyến mãi + điểm thưởng: POST /promotions/validate, applyPromotion, cộng điểm | Backend | Nghiêm Hân | `tv7-han` | 2 |
+| Task 10 – Nghiệp vụ backend | #36 [T10.4] (Mở rộng) Trang nhân viên cập nhật trạng thái | Frontend | Ai xong sớm nhận | nhánh của người nhận | 2 |
 
 
 ## Quản lý

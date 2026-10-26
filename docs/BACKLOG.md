@@ -19,7 +19,7 @@ Bảng phân công đích danh (gồm nhánh): [PHAN-CONG.md](PHAN-CONG.md). Ngu
 | #18 | T10.1 | Order State Machine + lịch sử trạng thái + PATCH /orders/:id/status + test (a) | TV7 | 5 | #10 Nghiệp vụ backend |
 | #34 | T1.4 | Swagger /docs + bộ lọc lỗi toàn cục cho backend | TV1 | 2 | #1 Khởi tạo dự án |
 
-### Sprint 2 – Giỏ hàng, đặt đơn, đăng nhập
+### Sprint 2 – Hoàn thiện MVP, CI/CD, deploy và bàn giao
 
 | Issue | Mã | Việc | Người | SP | Task cha |
 |---|---|---|---|---|---|
@@ -31,11 +31,6 @@ Bảng phân công đích danh (gồm nhánh): [PHAN-CONG.md](PHAN-CONG.md). Ngu
 | #24 | T7.3 | Auth store, gắn token vào api-client, route guard (EX-01) | TV5 | 3 | #7 Đăng ký/Đăng nhập (JWT) |
 | #25 | T8.1 | API POST /payments + Mock gateway + Idempotency-Key + test (b) | TV6 | 5 | #8 Thanh toán không tiền mặt |
 | #26 | T10.2 | Kiểm soát tồn kho: transaction + optimistic locking + test (c) | TV7 | 5 | #10 Nghiệp vụ backend |
-
-### Sprint 3 – Thanh toán, bàn giao & nghiệp vụ nâng cao
-
-| Issue | Mã | Việc | Người | SP | Task cha |
-|---|---|---|---|---|---|
 | #27 | T8.2 | Trang thanh toán /payment/[orderId]: QR + 4 trạng thái | TV6 | 5 | #8 Thanh toán không tiền mặt |
 | #28 | T8.3 | Hủy đơn: POST /orders/:id/cancel + hoàn tiền mô phỏng + nút Hủy | TV6 | 3 | #8 Thanh toán không tiền mặt |
 | #29 | T9.1 | API GET /orders/me và GET /orders/:id | TV2 | 2 | #9 Xác nhận, lịch sử & bàn giao |

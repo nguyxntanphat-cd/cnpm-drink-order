@@ -1,5 +1,5 @@
 {
-  "name": "brewlite-backend",
+  "name": "brewlite-api",
   "version": "0.0.1",
   "description": "BrewLite API (NestJS)",
   "author": "",

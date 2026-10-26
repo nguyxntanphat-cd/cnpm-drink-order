@@ -1,12 +1,12 @@
 # BrewLite – Frontend (Next.js)
 
-Quy ước: xem [`../AGENTS.md`](../AGENTS.md) (file `AGENTS.md` trong thư mục này do Next.js tự sinh – giữ nguyên).
-Thiết kế: [`../docs/DESIGN.md`](../docs/DESIGN.md) · API: [`../docs/API.md`](../docs/API.md).
+Quy ước: xem [`../../AGENTS.md`](../../AGENTS.md) (file `AGENTS.md` trong thư mục này do Next.js tự sinh – giữ nguyên).
+Thiết kế: [`../../docs/DESIGN.md`](../../docs/DESIGN.md) · API: [`../../docs/API.md`](../../docs/API.md).
 
 ## Chạy dev
 
 ```bash
-cd frontend
+cd apps/web
 cp .env.example .env.local
 npm install
 npm run dev        # http://localhost:3000 (backend cần chạy ở :3001)
