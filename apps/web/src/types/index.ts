@@ -68,7 +68,6 @@ export interface Order {
   status: OrderStatus;
   subtotal: number;
   discount: number;
-  shippingFee: number;
   total: number;
   promoCode: string | null;
   createdAt: string;

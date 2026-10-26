@@ -32,7 +32,7 @@ interface OrderItem {
 }
 interface Order {
   id: number; code: string; status: OrderStatus;
-  subtotal: number; discount: number; shippingFee: number; total: number;
+  subtotal: number; discount: number; total: number;
   promoCode: string | null; createdAt: string;
   items: OrderItem[];
   statusHistory: { from: OrderStatus | null; to: OrderStatus; createdAt: string }[];
@@ -103,6 +103,6 @@ Header bắt buộc: `Idempotency-Key: <uuid>`
 | PAYMENT_FAILED | Thanh toán thất bại | danger |
 | PAID | Đã thanh toán | info |
 | PREPARING | Đang pha chế | warning |
-| READY | Sẵn sàng / Đang giao | info |
-| COMPLETED | Hoàn thành | success |
+| READY | Sẵn sàng lấy tại quầy | info |
+| COMPLETED | Hoàn thành (đã nhận đồ uống) | success |
 | CANCELLED | Đã hủy | danger |

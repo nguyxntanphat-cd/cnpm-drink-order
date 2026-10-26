@@ -206,7 +206,6 @@ model Order {
   status        OrderStatus          @default(PENDING)
   subtotal      Int
   discount      Int                  @default(0)
-  shippingFee   Int                  @default(0)
   total         Int
   promoCode     String?
   note          String?
@@ -288,7 +287,8 @@ model LoyaltyTransaction {
 
 ### 6.1 Giá
 - `unitPrice = ProductSize.price + Σ topping.price`; `lineTotal = unitPrice * qty`.
-- `subtotal = Σ lineTotal`; `total = subtotal - discount + shippingFee` (shippingFee = 0 trong MVP).
+- `subtotal = Σ lineTotal`; `total = subtotal - discount`.
+- **Không có giao hàng** (theo đề Assignment 1): khách nhận đồ uống tại quầy → không có địa chỉ giao, shipper, phí giao hàng, trạng thái "đang giao".
 - **Server luôn tự tính lại giá**, không tin giá client gửi lên.
 
 ### 6.2 Order State Machine (Task 10 – TV7)

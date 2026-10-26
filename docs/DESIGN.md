@@ -10,6 +10,8 @@
 | [`04-checkout-payment.png`](ui/04-checkout-payment.png) | "Đơn hàng của bạn" + Thanh toán QR với 4 trạng thái: chờ, đang xử lý, thất bại, thành công |
 | [`05-order-history.jpg`](ui/05-order-history.jpg) | Lịch sử đặt hàng (tab), chi tiết đơn + timeline trạng thái |
 
+> ⚠️ **Đề không có phần giao hàng.** Ảnh 03, 04, 05 còn dòng "Phí giao hàng", thông tin shipper, địa chỉ giao và nhãn "Giao hàng thành công/thất bại" – **không làm các phần này** (xem bảng "Khác biệt giữa thiết kế và đề bài" cuối file).
+
 > Chưa có ảnh cho màn **Menu** (`/`): dùng lưới thẻ sản phẩm 2 cột, cùng phong cách thẻ trắng bo góc như giỏ hàng,
 > thanh lọc danh mục dạng nút tab giống màn Lịch sử, nút giỏ hàng có badge số lượng ở header.
 
@@ -59,4 +61,6 @@ fontFamily: { sans: ['var(--font-inter)', 'system-ui', 'sans-serif'] }, // next/
 |---|---|---|
 | Size M / L | Size S / M / L | Seed tạo đủ S/M/L (đề chấm "chọn size S/M/L"); UI hiển thị các size API trả về, cùng kiểu radio như ảnh |
 | "Thanh toán khi nhận hàng" | Bắt buộc **không dùng tiền mặt** | Vô hiệu hóa lựa chọn này. Thay bằng 3 phương thức mock: **Chuyển khoản QR**, **Ví điện tử**, **Thẻ ngân hàng** (đề chấm "chọn Ví/Thẻ"); dùng cùng kiểu nút như ảnh |
-| Theo dõi shipper, giao hàng | Nhận tại quầy | Timeline dùng `statusHistory`; phần shipper là mở rộng, không bắt buộc |
+| Theo dõi shipper, giao hàng, địa chỉ giao | **Đề không có phần giao hàng** – khách nhận đồ uống tại quầy | **Bỏ hẳn**: không có shipper, địa chỉ giao, thời gian giao. Trang chi tiết đơn chỉ có thông tin món + timeline `statusHistory` (Đã đặt → Đã thanh toán → Đang pha chế → Sẵn sàng lấy tại quầy → Hoàn thành) |
+| Dòng "Phí giao hàng 0đ" ở giỏ hàng / đơn hàng | Không có giao hàng | **Bỏ dòng này**: chỉ hiển thị Tạm tính, Giảm giá (nếu có), Tổng cộng |
+| Nhãn "Giao hàng thành công / thất bại" ở lịch sử đơn | Không có giao hàng | Dùng nhãn trạng thái đơn trong bảng API.md (Hoàn thành, Đã hủy, Thanh toán thất bại…) |
