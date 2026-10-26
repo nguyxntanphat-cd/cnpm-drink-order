@@ -1,5 +1,5 @@
 # Dev: `docker compose up -d db`
-# Service api (apps/api) + web (apps/web) sẽ được thêm ở issue #32.
+# Service api (backend) + web (frontend) sẽ được thêm ở issue #32.
 services:
   db:
     image: postgres:16-alpine

@@ -1,6 +1,6 @@
 # BrewLite – Backend (NestJS)
 
-Quy ước: xem [`../../AGENTS.md`](../../AGENTS.md). Hợp đồng API: [`../../docs/API.md`](../../docs/API.md).
+Quy ước: xem [`../AGENTS.md`](../AGENTS.md). Hợp đồng API: [`../docs/API.md`](../docs/API.md).
 
 ## Chạy dev
 
@@ -8,7 +8,7 @@ Quy ước: xem [`../../AGENTS.md`](../../AGENTS.md). Hợp đồng API: [`../..
 # ở thư mục gốc repo: bật PostgreSQL
 docker compose up -d db
 
-cd apps/api
+cd backend
 cp .env.example .env
 npm install            # tự chạy prisma generate
 npm run prisma:migrate # tạo/cập nhật bảng

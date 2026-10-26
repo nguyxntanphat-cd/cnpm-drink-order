@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: apps/api
+        working-directory: backend
     services:
       postgres:
         image: postgres:16-alpine
@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: apps/api/package-lock.json
+          cache-dependency-path: backend/package-lock.json
       - name: Install
         run: npm ci
       - name: Lint
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: apps/web
+        working-directory: frontend
     env:
       NEXT_PUBLIC_API_URL: http://localhost:3001
     steps:
@@ -67,7 +67,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: apps/web/package-lock.json
+          cache-dependency-path: frontend/package-lock.json
       - name: Install
         run: npm ci
       - name: Lint

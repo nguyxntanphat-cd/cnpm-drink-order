@@ -32,14 +32,14 @@ Nhóm 7 thành viên, làm theo **Agile Scrum** trong **2 Sprint** (theo đề A
 | DevOps | Docker Compose, GitHub Actions |
 
 ```
-apps/web  Next.js  :3000  ──REST/JSON──▶  apps/api  NestJS  :3001  ──Prisma──▶  PostgreSQL :5432
+frontend  Next.js  :3000  ──REST/JSON──▶  backend  NestJS  :3001  ──Prisma──▶  PostgreSQL :5432
 ```
 
 ## Cấu trúc thư mục
 
 ```
-apps/api/    NestJS API – backend (cổng 3001)
-apps/web/    Next.js web – frontend (cổng 3000)
+backend/    NestJS API – backend (cổng 3001)
+frontend/    Next.js web – frontend (cổng 3000)
 tests/       E2E test (Playwright)
 docs/        Tài liệu, ảnh thiết kế, biên bản Scrum
 .github/     CI, mẫu issue / pull request
@@ -56,7 +56,7 @@ cd cnpm-drink-order
 docker compose up -d db                       # PostgreSQL ở localhost:5432
 
 # Terminal 1 – backend: http://localhost:3001
-cd apps/api
+cd backend
 cp .env.example .env
 npm install
 npm run prisma:migrate
@@ -64,14 +64,14 @@ npm run seed
 npm run start:dev
 
 # Terminal 2 – frontend: http://localhost:3000
-cd apps/web
+cd frontend
 cp .env.example .env.local
 npm install
 npm run dev
 ```
 
 Mở http://localhost:3000 thấy **"Hello BrewLite"** là backend và frontend đã nối được với nhau.
-Chi tiết lệnh: [apps/api/README.md](apps/api/README.md), [apps/web/README.md](apps/web/README.md).
+Chi tiết lệnh: [backend/README.md](backend/README.md), [frontend/README.md](frontend/README.md).
 
 Tài khoản demo (sau khi làm xong issue #14 – seed): `demo@brewlite.vn / 123456` · nhân viên `staff@brewlite.vn / 123456` · mã giảm giá `WELCOME10`.
 
@@ -143,7 +143,7 @@ git config --global user.email "email-github@cua-ban.com"
 ```bash
 docker compose up -d db                     # bật PostgreSQL
 
-cd apps/api
+cd backend
 cp .env.example .env
 npm install
 npm run prisma:migrate
@@ -151,7 +151,7 @@ npm run start:dev                           # để nguyên terminal này
 ```
 Mở terminal thứ hai:
 ```bash
-cd apps/web
+cd frontend
 cp .env.example .env.local
 npm install
 npm run dev
@@ -209,7 +209,7 @@ git merge origin/main             # lấy code mới nhất của cả nhóm tr�
 
 ### Bước 7 – Kiểm tra rồi commit
 
-Trong thư mục bạn sửa (`apps/api` hoặc `apps/web`):
+Trong thư mục bạn sửa (`backend` hoặc `frontend`):
 ```bash
 npm run format
 npm run lint
@@ -254,9 +254,9 @@ Quay lại **Bước 6**.
 |---|---|
 | `npm error Cannot read properties of null (reading 'edgesOut')` | Đang dùng Node 22 / npm 10 → cài Node 24 |
 | `Can't reach database server at localhost:5432` | Mở Docker Desktop, chạy lại `docker compose up -d db` |
-| Trang báo "Không kết nối được backend" | Backend chưa chạy, hoặc thiếu file `apps/web/.env.local` |
+| Trang báo "Không kết nối được backend" | Backend chưa chạy, hoặc thiếu file `frontend/.env.local` |
 | `npm warn install-scripts ...` khi cài thư viện mới | Chạy `npm install-scripts approve <tên-thư-viện>` |
-| Sau khi `git pull` bị lỗi thiếu thư viện / bảng | Chạy lại `npm install` và `npm run prisma:migrate` trong `apps/api` |
+| Sau khi `git pull` bị lỗi thiếu thư viện / bảng | Chạy lại `npm install` và `npm run prisma:migrate` trong `backend` |
 | Pull Request bị **conflict** | `git fetch origin && git merge origin/main` trên nhánh của bạn, sửa chỗ conflict, commit + push lại |
 | CI đỏ ❌ | Bấm **Details** cạnh dấu ❌ xem bước nào lỗi, chạy lại lệnh đó ở máy, sửa rồi push |
 
